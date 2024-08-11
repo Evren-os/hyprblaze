@@ -24,7 +24,7 @@ To install, execute the following commands:
 
 ```shell
 pacman -Sy git
-git clone --depth 1 https://github.com/prasanthrangan/hyprdots ~/HyDE
+git clone --depth 1 https://github.com/Evren-os/hyprblaze ~/HyDE
 cd ~/HyDE/Scripts
 ./install.sh
 ```
