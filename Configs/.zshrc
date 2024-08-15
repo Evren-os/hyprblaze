@@ -82,6 +82,11 @@ alias c='clear'
 alias vc='code'
 alias mkdir='mkdir -p'
 
+# Update Aliases
+alias pacman-update="sudo pacman -Syu --noconfirm"
+alias paru-update="paru -Syu --noconfirm"
+alias system-update="sudo pacman -Syu --noconfirm && paru -Syu --noconfirm && flatpak update -y"
+
 # Load p10k config if it exists
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -92,5 +97,5 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Load plugins after Powerlevel10k instant prompt
 load_plugins
 
-
 export PATH=$PATH:/home/evrenos/.spicetify
+
