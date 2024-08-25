@@ -28,6 +28,7 @@ unrar
 flatpak
 ttf-twemoji
 vulkan-radeon
+btop
 
 # --------------------------------------------------- // Display Manager
 sddm                                                   # display manager for KDE plasma
