@@ -1,0 +1,75 @@
+[colors.primary]
+background = "#15151f"  # Darker background
+foreground = "#d8e1ff"  # Slightly brighter foreground for contrast
+dim_foreground = "#8a90a8"  # Adjusted dim foreground
+bright_foreground = "#e0e9ff"  # Brighter foreground
+
+[colors.cursor]
+text = "#15151f"  # Matching the new background
+cursor = "#ffeadc"  # More saturated cursor color
+
+[colors.vi_mode_cursor]
+text = "#15151f"  # Matching the new background
+cursor = "#bcc7ff"  # More saturated vi mode cursor
+
+[colors.search.matches]
+foreground = "#15151f"  # Matching the new background
+background = "#b6bddb"  # Slightly darker and more saturated
+
+[colors.search.focused_match]
+foreground = "#15151f"  # Matching the new background
+background = "#a6f3a1"  # More saturated focused match background
+
+[colors.footer_bar]
+foreground = "#15151f"  # Matching the new background
+background = "#b6bddb"  # Slightly darker and more saturated
+
+[colors.hints.start]
+foreground = "#15151f"  # Matching the new background
+background = "#fff2af"  # More saturated hint start
+
+[colors.hints.end]
+foreground = "#15151f"  # Matching the new background
+background = "#b6bddb"  # Slightly darker and more saturated
+
+[colors.selection]
+text = "#15151f"  # Matching the new background
+background = "#ffeadc"  # More saturated selection background
+
+[colors.normal]
+black = "#3a3c4d"  # Darker black
+red = "#ff7a98"    # More saturated red
+green = "#96f391"  # More saturated green
+yellow = "#ffed9f" # More saturated yellow
+blue = "#79a4fa"   # More saturated blue
+magenta = "#ffb2e7" # More saturated magenta
+cyan = "#84f2d5"   # More saturated cyan
+white = "#cad3ef"  # Slightly darker white
+
+[colors.bright]
+black = "#4d5066"  # Darker bright black
+red = "#ff8aa8"    # Brighter and more saturated red
+green = "#a6ffa1"  # Brighter and more saturated green
+yellow = "#fff2af" # Brighter and more saturated yellow
+blue = "#99c4ff"   # Brighter and more saturated blue
+magenta = "#ffc2f7" # Brighter and more saturated magenta
+cyan = "#a4ffe5"   # Brighter and more saturated cyan
+white = "#b6bddb"  # Darker bright white
+
+[colors.dim]
+black = "#3a3c4d"  # Matching normal black
+red = "#e57088"    # Dimmed but still saturated red
+green = "#86d381"  # Dimmed but still saturated green
+yellow = "#efd38f" # Dimmed but still saturated yellow
+blue = "#6994ea"   # Dimmed but still saturated blue
+magenta = "#efa2d7" # Dimmed but still saturated magenta
+cyan = "#74e2c5"   # Dimmed but still saturated cyan
+white = "#bac3df"  # Dimmed white
+
+[[colors.indexed_colors]]
+index = 16
+color = "#ffb387"  # More saturated indexed color 16
+
+[[colors.indexed_colors]]
+index = 17
+color = "#ffeadc"  # More saturated indexed color 17
