@@ -259,3 +259,4 @@ if [ "${enableWallDcol}" -eq 0 ]; then
 fi
 
 find "${wallbashDir}/Wall-Ways" -type f -name "*.dcol" | parallel fn_wallbash {}
+
