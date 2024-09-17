@@ -8,11 +8,11 @@ cat << "EOF"
 
 -------------------------------------------------
         .
-       / \         _       _  _      ___  ___ 
+       / \         _       _  _      ___  ___
       /^  \      _| |_    | || |_  _|   \| __|
-     /  _  \    |_   _|   | __ | || | |) | _| 
+     /  _  \    |_   _|   | __ | || | |) | _|
     /  | | ~\     |_|     |_||_|\_, |___/|___|
-   /.-'   '-.\                  |__/          
+   /.-'   '-.\                  |__/
 
 -------------------------------------------------
 
@@ -113,14 +113,12 @@ EOF
     # get user prefs #
     #----------------#
     if ! chk_list "aurhlpr" "${aurList[@]}"; then
-        echo -e "Available aur helpers:\n[1] yay\n[2] yay (bin)\n[3] paru\n[4] paru (bin)"
-        prompt_timer 120 "Enter option number [default: yay] "
+        echo -e "Available aur helpers:\n[1] yay\n[2] paru"
+        prompt_timer 120 "Enter option number"
 
         case "${promptIn}" in
             1) export getAur="yay" ;;
-            2) export getAur="yay-bin" ;;
-            3) export getAur="paru" ;;
-            4) export getAur="paru-bin" ;;
+            2) export getAur="paru" ;;
             *) echo -e "...Invalid option selected..." ; exit 1 ;;
         esac
     fi
@@ -161,15 +159,21 @@ EOF
     "${scrDir}/restore_fnt.sh"
     "${scrDir}/restore_cfg.sh"
     echo -e "\n\033[0;32m[themepatcher]\033[0m Patching themes..."
-    while IFS='"' read -r null1 themeName null2 themeRepo
-    do
-        themeNameQ+=("${themeName//\"/}")
-        themeRepoQ+=("${themeRepo//\"/}")
-        themePath="${confDir}/hyde/themes/${themeName}"
-        [ -d "${themePath}" ] || mkdir -p "${themePath}"
-        [ -f "${themePath}/.sort" ] || echo "${#themeNameQ[@]}" > "${themePath}/.sort"
-    done < "${scrDir}/themepatcher.lst"
-    parallel --bar --link "${scrDir}/themepatcher.sh" "{1}" "{2}" "{3}" "{4}" ::: "${themeNameQ[@]}" ::: "${themeRepoQ[@]}" ::: "--skipcaching" ::: "false"
+
+    # New theme patching commands
+    "${scrDir}/themepatcher.sh" "Catppuccin Mocha" "https://github.com/prasanthrangan/hyde-themes/tree/Catppuccin-Mocha"
+    "${scrDir}/themepatcher.sh" "Catppuccin Latte" "https://github.com/prasanthrangan/hyde-themes/tree/Catppuccin-Latte"
+    "${scrDir}/themepatcher.sh" "Rosé Pine" "https://github.com/prasanthrangan/hyde-themes/tree/Rose-Pine"
+    "${scrDir}/themepatcher.sh" "Tokyo Night" "https://github.com/prasanthrangan/hyde-themes/tree/Tokyo-Night"
+    "${scrDir}/themepatcher.sh" "Material Sakura" "https://github.com/prasanthrangan/hyde-themes/tree/Material-Sakura"
+    "${scrDir}/themepatcher.sh" "Graphite Mono" "https://github.com/prasanthrangan/hyde-themes/tree/Graphite-Mono"
+    "${scrDir}/themepatcher.sh" "Decay Green" "https://github.com/prasanthrangan/hyde-themes/tree/Decay-Green"
+    "${scrDir}/themepatcher.sh" "Edge Runner" "https://github.com/prasanthrangan/hyde-themes/tree/Edge-Runner"
+    "${scrDir}/themepatcher.sh" "Frosted Glass" "https://github.com/prasanthrangan/hyde-themes/tree/Frosted-Glass"
+    "${scrDir}/themepatcher.sh" "Gruvbox Retro" "https://github.com/prasanthrangan/hyde-themes/tree/Gruvbox-Retro"
+    "${scrDir}/themepatcher.sh" "Synth Wave" "https://github.com/prasanthrangan/hyde-themes/tree/Synth-Wave"
+    "${scrDir}/themepatcher.sh" "Nordic Blue" "https://github.com/prasanthrangan/hyde-themes/tree/Nordic-Blue"
+
     echo -e "\n\033[0;32m[cache]\033[0m generating cache files..."
     "$HOME/.local/share/bin/swwwallcache.sh" -t ""
     if printenv HYPRLAND_INSTANCE_SIGNATURE &> /dev/null; then
