@@ -1,39 +1,14 @@
-# Path to your oh-my-zsh installation
-export ZSH="/usr/share/oh-my-zsh"
+# Oh-my-zsh installation path
+ZSH=/usr/share/oh-my-zsh/
 
-# Set up Zinit
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d "$ZINIT_HOME" ] && mkdir -p "$(dirname $ZINIT_HOME)" && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
+# Powerlevel10k theme path
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
-# Load powerlevel10k theme
-# source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-
-# Function to load plugins
-load_plugins() {
-  # Load zsh-async
-  zinit light mafredri/zsh-async
-
-  # Load other plugins
-  zinit light nullxception/roundy
-  zinit snippet OMZ::plugins/git/git.plugin.zsh
-  zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
-  zinit light zsh-users/zsh-autosuggestions
-  zinit light zsh-users/zsh-syntax-highlighting
-  zinit light chrissicool/zsh-256color
-  zinit light Aloxaf/fzf-tab
-
-  # Lazy-load oh-my-zsh
-  zinit snippet OMZ::lib/completion.zsh
-  zinit snippet OMZ::lib/history.zsh
-  zinit snippet OMZ::lib/key-bindings.zsh
-  zinit snippet OMZ::lib/theme-and-appearance.zsh
-}
-
-# Source oh-my-zsh
+# List of plugins used
+plugins=()
 source $ZSH/oh-my-zsh.sh
 
-# Command not found handler
+# In case a command is not found, try to find the package that has it
 function command_not_found_handler {
     local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
     printf 'zsh: command not found: %s\n' "$1"
@@ -43,7 +18,7 @@ function command_not_found_handler {
         local pkg
         for entry in "${entries[@]}" ; do
             local fields=( ${(0)entry} )
-            if [[ "$pkg" != "${fields[2]}" ]] ; then
+            if [[ "$pkg" != "${fields[2]}" ]]; then
                 printf "${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
             fi
             printf '    /%s\n' "${fields[4]}"
@@ -55,47 +30,60 @@ function command_not_found_handler {
 
 # Detect AUR wrapper
 if pacman -Qi yay &>/dev/null; then
-    aurhelper="yay"
+   aurhelper="yay"
 elif pacman -Qi paru &>/dev/null; then
-    aurhelper="paru"
+   aurhelper="paru"
 fi
 
-# Package installation function
 function in {
-    local -a arch=() aur=()
-    for pkg in "$@"; do
+    local -a inPkg=("$@")
+    local -a arch=()
+    local -a aur=()
+
+    for pkg in "${inPkg[@]}"; do
         if pacman -Si "${pkg}" &>/dev/null; then
             arch+=("${pkg}")
         else
             aur+=("${pkg}")
         fi
     done
-    [[ ${#arch[@]} -gt 0 ]] && sudo pacman -S "${arch[@]}"
-    [[ ${#aur[@]} -gt 0 ]] && ${aurhelper} -S "${aur[@]}"
+
+    if [[ ${#arch[@]} -gt 0 ]]; then
+        sudo pacman -S "${arch[@]}"
+    fi
+
+    if [[ ${#aur[@]} -gt 0 ]]; then
+        ${aurhelper} -S "${aur[@]}"
+    fi
 }
 
-# Aliases
+# Helpful aliases
+alias c='clear' # clear terminal
+alias l='eza -lh --icons=auto' # long list
+alias ls='eza -1 --icons=auto' # short list
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto' # long list dirs
+alias lt='eza --icons=auto --tree' # list folder as tree
+alias un='$aurhelper -Rns' # uninstall package
+alias up='$aurhelper -Syu' # update system/package/aur
+alias pl='$aurhelper -Qs' # list installed package
+alias pa='$aurhelper -Ss' # list available package
+alias pc='$aurhelper -Sc' # remove unused cache
+alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
+alias vc='code' # gui code editor
+
+# Directory navigation shortcuts
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ls='ls --color'
-alias c='clear'
-alias vc='code'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+
+# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
 
-# Update Aliases
-alias pacman-update="sudo pacman -Syu --noconfirm"
-alias paru-update="paru -Syu --noconfirm"
-alias system-update="sudo pacman -Syu --noconfirm && paru -Syu --noconfirm && flatpak update -y"
-
-# Load p10k config if it exists
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Add local bin to PATH
-export PATH=$PATH:~/.local/bin
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# Load plugins after Powerlevel10k instant prompt
-load_plugins
-
-export PATH=$PATH:/home/evrenos/.spicetify
-
+# Display Pokemon
+pokemon-colorscripts --no-title -r 1,3,6
