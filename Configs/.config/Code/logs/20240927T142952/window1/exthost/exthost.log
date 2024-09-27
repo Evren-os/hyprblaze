@@ -1,0 +1,70 @@
+2024-09-27 14:29:53.732 [info] Extension host with pid 75148 started
+2024-09-27 14:29:53.732 [info] Skipping acquiring lock for /home/evrenos/.config/Code/User/workspaceStorage/5e50ae5a032210ee5176574379c62bf2.
+2024-09-27 14:29:53.883 [info] ExtensionService#_doActivateExtension HTMLHint.vscode-htmlhint, startup: false, activationEvent: 'onFileSystem:file'
+2024-09-27 14:29:53.898 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2024-09-27 14:29:53.992 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2024-09-27 14:29:53.994 [info] ExtensionService#_doActivateExtension be5invis.vscode-custom-css, startup: true, activationEvent: '*'
+2024-09-27 14:29:54.008 [info] ExtensionService#_doActivateExtension christian-kohler.path-intellisense, startup: true, activationEvent: '*'
+2024-09-27 14:29:54.014 [info] ExtensionService#_doActivateExtension formulahendry.auto-close-tag, startup: true, activationEvent: '*'
+2024-09-27 14:29:54.015 [info] ExtensionService#_doActivateExtension formulahendry.auto-rename-tag, startup: true, activationEvent: '*'
+2024-09-27 14:29:54.057 [warning] [formulahendry.auto-rename-tag] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'auto-rename-tag.activationOnLanguage', provide the URI of a resource or 'null' for any resource.
+2024-09-27 14:29:54.063 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2024-09-27 14:29:54.112 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2024-09-27 14:29:54.166 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.openRepositoryInParentFolders', provide the URI of a resource or 'null' for any resource.
+2024-09-27 14:29:54.166 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.showProgress', provide the URI of a resource or 'null' for any resource.
+2024-09-27 14:29:54.249 [info] Eager extensions activated
+2024-09-27 14:29:54.251 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2024-09-27 14:29:54.272 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2024-09-27 14:29:54.273 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2024-09-27 14:29:54.284 [info] ExtensionService#_doActivateExtension aaron-bond.better-comments, startup: false, activationEvent: 'onStartupFinished'
+2024-09-27 14:29:54.291 [info] ExtensionService#_doActivateExtension bradlc.vscode-tailwindcss, startup: false, activationEvent: 'onStartupFinished'
+2024-09-27 14:29:54.318 [info] ExtensionService#_doActivateExtension dbaeumer.vscode-eslint, startup: false, activationEvent: 'onStartupFinished'
+2024-09-27 14:29:54.340 [info] ExtensionService#_doActivateExtension dsznajder.es7-react-js-snippets, startup: false, activationEvent: 'onStartupFinished'
+2024-09-27 14:29:54.610 [info] ExtensionService#_doActivateExtension esbenp.prettier-vscode, startup: false, activationEvent: 'onStartupFinished'
+2024-09-27 14:29:54.655 [info] ExtensionService#_doActivateExtension formulahendry.code-runner, startup: false, activationEvent: 'onStartupFinished'
+2024-09-27 14:29:54.664 [info] ExtensionService#_doActivateExtension moalamri.inline-fold, startup: false, activationEvent: 'onStartupFinished'
+2024-09-27 14:29:54.666 [info] ExtensionService#_doActivateExtension ritwickdey.LiveServer, startup: false, activationEvent: 'onStartupFinished'
+2024-09-27 14:29:54.669 [info] ExtensionService#_doActivateExtension streetsidesoftware.code-spell-checker, startup: false, activationEvent: 'onStartupFinished'
+2024-09-27 14:29:54.725 [info] ExtensionService#_doActivateExtension stylelint.vscode-stylelint, startup: false, activationEvent: 'onStartupFinished'
+2024-09-27 14:29:54.790 [warning] [formulahendry.code-runner] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'code-runner.enableAppInsights', provide the URI of a resource or 'null' for any resource.
+2024-09-27 14:29:54.821 [warning] [bradlc.vscode-tailwindcss] Accessing a window scoped configuration for a resource is not expected. To associate 'tailwindCSS.experimental.configFile' to a resource, define its scope to 'resource' in configuration contributions in 'package.json'.
+2024-09-27 14:29:54.821 [warning] [bradlc.vscode-tailwindcss] Accessing a window scoped configuration for a resource is not expected. To associate 'tailwindCSS.files.exclude' to a resource, define its scope to 'resource' in configuration contributions in 'package.json'.
+2024-09-27 14:29:54.951 [warning] [stylelint.vscode-stylelint] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'stylelint.enable', provide the URI of a resource or 'null' for any resource.
+2024-09-27 14:29:55.046 [warning] [bradlc.vscode-tailwindcss] Accessing a window scoped configuration for a resource is not expected. To associate 'tailwindCSS.files.exclude' to a resource, define its scope to 'resource' in configuration contributions in 'package.json'.
+2024-09-27 14:29:55.592 [warning] [dbaeumer.vscode-eslint] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'eslint.nodeEnv', provide the URI of a resource or 'null' for any resource.
+2024-09-27 14:29:55.608 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2024-09-27 14:29:55.616 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2024-09-27 14:29:55.655 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2024-09-27 14:29:56.016 [warning] [stylelint.vscode-stylelint] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'stylelint.enable', provide the URI of a resource or 'null' for any resource.
+2024-09-27 14:30:04.104 [warning] [bradlc.vscode-tailwindcss] Accessing a window scoped configuration for a resource is not expected. To associate 'tailwindCSS.files.exclude' to a resource, define its scope to 'resource' in configuration contributions in 'package.json'.
+2024-09-27 14:30:20.072 [info] Extension host terminating: renderer closed the MessagePort
+2024-09-27 14:30:20.078 [error] An error occurred when deactivating the extension 'moalamri.inline-fold':
+2024-09-27 14:30:20.081 [error] TypeError: Cannot read properties of undefined (reading 'subscriptions')
+    at Object.deactivate (/home/evrenos/.vscode/extensions/moalamri.inline-fold-0.2.6/src/extension.ts:76:11)
+    at m.eb (/opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:167:10082)
+    at /opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:167:8153
+    at Array.map (<anonymous>)
+    at m.$ (/opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:167:8140)
+    at m.terminate (/opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:167:8413)
+    at $.terminate (/opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:171:1513)
+    at n (/opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:184:10613)
+    at MessagePortMain.<anonymous> (/opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:184:6805)
+    at MessagePortMain.emit (node:events:519:28)
+    at Object.MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2619)
+2024-09-27 14:30:20.086 [error] Canceled: Canceled
+    at new D (/opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:151:35235)
+    at y.U (/opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:158:6005)
+    at Proxy.V.<computed>.F.charCodeAt.A.CharCode.DollarSign.V.<computed> (/opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:158:3107)
+    at h.g (/opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:161:210015)
+    at h.executeCommand (/opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:161:209453)
+    at C.registerCommand.description (/opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:161:208777)
+    at h (/opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:161:210554)
+    at h.g (/opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:161:209546)
+    at h.executeCommand (/opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:161:209453)
+    at Object.executeCommand (/opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:171:30683)
+    at pE (/home/evrenos/.vscode/extensions/bradlc.vscode-tailwindcss-0.12.5/dist/extension.js:40:8764)
+    at Ne (/home/evrenos/.vscode/extensions/bradlc.vscode-tailwindcss-0.12.5/dist/extension.js:4:1357)
+    at me (/home/evrenos/.vscode/extensions/bradlc.vscode-tailwindcss-0.12.5/dist/extension.js:3:6845)
+    at Immediate.<anonymous> (/home/evrenos/.vscode/extensions/bradlc.vscode-tailwindcss-0.12.5/dist/extension.js:3:6723)
+    at processImmediate (node:internal/timers:478:21) setContext undefined
+2024-09-27 14:30:20.088 [info] Extension host with pid 75148 exiting with code 0

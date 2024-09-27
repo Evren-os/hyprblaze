@@ -1,0 +1,10 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/nvme0n1p6
+UUID=783e3ed8-e1bd-4efa-b922-2528b1c4a1e0	/         	xfs       	rw,relatime,attr2,inode64,logbufs=8,logbsize=32k,sunit=32,swidth=256,noquota	0 1
+
+# /dev/nvme0n1p5
+UUID=56B7-C566      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+UUID=8458B28658B27690 /mnt/windows ntfs-3g rw,auto,user,fmask=0022,dmask=0022,uid=1000,gid=1000,windows_names,locale=en_US.utf8,big_writes,async,noatime 0 0

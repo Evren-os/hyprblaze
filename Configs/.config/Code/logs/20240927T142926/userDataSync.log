@@ -1,0 +1,14 @@
+2024-09-27 14:29:26.641 [info] Using settings sync service https://vscode-sync.trafficmanager.net/
+2024-09-27 14:29:26.641 [info] Auto Sync is enabled.
+2024-09-27 14:29:26.641 [info] Auto Sync: Suspended until auth token is available.
+2024-09-27 14:29:27.026 [info] Auto Sync: Triggered by Interval
+2024-09-27 14:29:27.026 [info] Sync started.
+2024-09-27 14:29:27.808 [info] Settings: No changes found during synchronizing settings.
+2024-09-27 14:29:27.819 [info] Keybindings: No changes found during synchronizing keybindings.
+2024-09-27 14:29:27.823 [info] Snippets: No changes found during synchronizing snippets.
+2024-09-27 14:29:27.824 [info] Tasks: No changes found during synchronizing tasks.
+2024-09-27 14:29:28.837 [info] GlobalState: Updated remote ui state. Updated: workbench.explorer.views.state.hidden.
+2024-09-27 14:29:28.839 [info] GlobalState: Updated last synchronized ui state
+2024-09-27 14:29:28.859 [info] Extensions: No changes found during synchronizing extensions.
+2024-09-27 14:29:28.861 [info] Profiles: No changes found during synchronizing profiles.
+2024-09-27 14:29:28.862 [info] Sync done. Took 1836ms
