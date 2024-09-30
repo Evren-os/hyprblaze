@@ -77,7 +77,7 @@ alias mkdir='mkdir -p'
 # Update Aliases
 alias pacman-update="sudo pacman -Syu --noconfirm"
 alias paru-update="paru -Syu --noconfirm"
-alias system-update="sudo pacman -Syu --noconfirm && paru -Syu --noconfirm && flatpak update -y"
+alias system-update="sudo pacman -Syu --noconfirm && paru -Syu --noconfirm"
 
 # Load p10k config if it exists
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

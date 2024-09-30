@@ -1,0 +1,16 @@
+1 ) GRUB Setup + Grub Theme
+
+    edit /etc/default/grub to enable os-prober
+    grub theme : https://github.com/vinceliuice/grub2-themes.git
+    cd to dir and do : sudo ./install.sh -t whitesur
+
+2 ) Setup AGS
+
+  curl -fsSL https://bun.sh/install | bash
+  sudo ln -s $HOME/.bun/bin/bun /usr/local/bin/bun
+  sudo pacman -S pipewire libgtop bluez bluez-utils btop networkmanager dart-sass wl-clipboard brightnessctl swww python gnome-bluetooth-3.0 pacman-contrib power-profiles-daemon
+  paru -S grimblast-git gpu-screen-recorder hyprpicker matugen-bin python-gpustat aylurs-gtk-shell-git
+  cd ~/Clone
+  git clone https://github.com/Jas-SinghFSU/HyprPanel.git
+  ln -s $(pwd)/HyprPanel $HOME/.config/ags
+  Add this to hyprland.conf : exec-once = ags
