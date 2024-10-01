@@ -1,3 +1,0 @@
-2024-09-27 14:41:43.558 [info] Started local extension host with pid 129522.
-2024-09-27 14:41:43.745 [error] Error scanning extensions at /$HOME/.vscode-oss/extensions/undefined_publisher.wallbash-0.0.1: Unable to resolve nonexistent file '/$HOME/.vscode-oss/extensions/undefined_publisher.wallbash-0.0.1'
-2024-09-27 14:41:46.179 [info] [perf] Render performance baseline is 18ms

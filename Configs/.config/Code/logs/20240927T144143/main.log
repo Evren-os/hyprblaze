@@ -1,4 +1,0 @@
-2024-09-27 14:41:43.155 [info] update#setState disabled
-2024-09-27 14:41:43.155 [info] update#ctor - updates are disabled by user preference
-2024-09-27 14:42:47.835 [info] Extension host with pid 129522 exited with code: 0, signal: unknown.
-2024-09-27 14:42:47.848 [error] [UtilityProcessWorker]: terminated unexpectedly with code 584979568, signal: unknown
