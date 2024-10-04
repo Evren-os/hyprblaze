@@ -1,75 +1,75 @@
 [colors.primary]
-background = "#15151f"  # Darker background
-foreground = "#d8e1ff"  # Slightly brighter foreground for contrast
-dim_foreground = "#8a90a8"  # Adjusted dim foreground
-bright_foreground = "#e0e9ff"  # Brighter foreground
+background = "#1a1b26"  # Slightly darker, richer background
+foreground = "#e0e9ff"  # Brighter foreground for better contrast
+dim_foreground = "#a9b1d6"  # Adjusted dim foreground
+bright_foreground = "#f0f8ff"  # Even brighter foreground
 
 [colors.cursor]
-text = "#15151f"  # Matching the new background
-cursor = "#ffeadc"  # More saturated cursor color
+text = "#1a1b26"  # Matching the new background
+cursor = "#bb9af7"  # Purple cursor for better visibility
 
 [colors.vi_mode_cursor]
-text = "#15151f"  # Matching the new background
-cursor = "#bcc7ff"  # More saturated vi mode cursor
+text = "#1a1b26"  # Matching the new background
+cursor = "#7aa2f7"  # Blue vi mode cursor
 
 [colors.search.matches]
-foreground = "#15151f"  # Matching the new background
-background = "#b6bddb"  # Slightly darker and more saturated
+foreground = "#1a1b26"  # Matching the new background
+background = "#7aa2f7"  # Blue background for search matches
 
 [colors.search.focused_match]
-foreground = "#15151f"  # Matching the new background
-background = "#a6f3a1"  # More saturated focused match background
+foreground = "#1a1b26"  # Matching the new background
+background = "#7dcfff"  # Cyan background for focused match
 
 [colors.footer_bar]
-foreground = "#15151f"  # Matching the new background
-background = "#b6bddb"  # Slightly darker and more saturated
+foreground = "#1a1b26"  # Matching the new background
+background = "#7aa2f7"  # Blue background for footer
 
 [colors.hints.start]
-foreground = "#15151f"  # Matching the new background
-background = "#fff2af"  # More saturated hint start
+foreground = "#1a1b26"  # Matching the new background
+background = "#e0af68"  # Orange background for hints
 
 [colors.hints.end]
-foreground = "#15151f"  # Matching the new background
-background = "#b6bddb"  # Slightly darker and more saturated
+foreground = "#1a1b26"  # Matching the new background
+background = "#7aa2f7"  # Blue background for hint ends
 
 [colors.selection]
-text = "#15151f"  # Matching the new background
-background = "#ffeadc"  # More saturated selection background
+text = "#1a1b26"  # Matching the new background
+background = "#515c7e"  # Subdued selection background
 
 [colors.normal]
-black = "#3a3c4d"  # Darker black
-red = "#ff7a98"    # More saturated red
-green = "#96f391"  # More saturated green
-yellow = "#ffed9f" # More saturated yellow
-blue = "#79a4fa"   # More saturated blue
-magenta = "#ffb2e7" # More saturated magenta
-cyan = "#84f2d5"   # More saturated cyan
-white = "#cad3ef"  # Slightly darker white
+black = "#32344a"
+red = "#f7768e"
+green = "#9ece6a"
+yellow = "#e0af68"
+blue = "#7aa2f7"
+magenta = "#ad8ee6"
+cyan = "#449dab"
+white = "#787c99"
 
 [colors.bright]
-black = "#4d5066"  # Darker bright black
-red = "#ff8aa8"    # Brighter and more saturated red
-green = "#a6ffa1"  # Brighter and more saturated green
-yellow = "#fff2af" # Brighter and more saturated yellow
-blue = "#99c4ff"   # Brighter and more saturated blue
-magenta = "#ffc2f7" # Brighter and more saturated magenta
-cyan = "#a4ffe5"   # Brighter and more saturated cyan
-white = "#b6bddb"  # Darker bright white
+black = "#444b6a"
+red = "#ff7a93"
+green = "#b9f27c"
+yellow = "#ff9e64"
+blue = "#7da6ff"
+magenta = "#bb9af7"
+cyan = "#0db9d7"
+white = "#acb0d0"
 
 [colors.dim]
-black = "#3a3c4d"  # Matching normal black
-red = "#e57088"    # Dimmed but still saturated red
-green = "#86d381"  # Dimmed but still saturated green
-yellow = "#efd38f" # Dimmed but still saturated yellow
-blue = "#6994ea"   # Dimmed but still saturated blue
-magenta = "#efa2d7" # Dimmed but still saturated magenta
-cyan = "#74e2c5"   # Dimmed but still saturated cyan
-white = "#bac3df"  # Dimmed white
+black = "#2a2b3d"
+red = "#d5667b"
+green = "#8ab85c"
+yellow = "#c29a5b"
+blue = "#6a8bd9"
+magenta = "#9879c9"
+cyan = "#3b8694"
+white = "#666b85"
 
 [[colors.indexed_colors]]
 index = 16
-color = "#ffb387"  # More saturated indexed color 16
+color = "#ff9e64"
 
 [[colors.indexed_colors]]
 index = 17
-color = "#ffeadc"  # More saturated indexed color 17
+color = "#db4b4b"

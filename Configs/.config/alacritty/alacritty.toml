@@ -1,42 +1,128 @@
-#   █████╗ ██╗      █████╗  ██████╗██████╗ ██╗████████╗████████╗██╗   ██╗
-#  ██╔══██╗██║     ██╔══██╗██╔════╝██╔══██╗██║╚══██╔══╝╚══██╔══╝╚██╗ ██╔╝
-#  ███████║██║     ███████║██║     ██████╔╝██║   ██║      ██║    ╚████╔╝
-#  ██╔══██║██║     ██╔══██║██║     ██╔══██╗██║   ██║      ██║     ╚██╔╝
-#  ██║  ██║███████╗██║  ██║╚██████╗██║  ██║██║   ██║      ██║      ██║
-#  ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝      ╚═╝
-#	gh0stzk - https://github.com/gh0stzk/dotfiles
+# █████╗ ██╗      █████╗  ██████╗██████╗ ██╗████████╗████████╗██╗   ██╗
+#██╔══██╗██║     ██╔══██╗██╔════╝██╔══██╗██║╚══██╔══╝╚══██╔══╝╚██╗ ██╔╝
+#███████║██║     ███████║██║     ██████╔╝██║   ██║      ██║    ╚████╔╝
+#██╔══██║██║     ██╔══██║██║     ██╔══██╗██║   ██║      ██║     ╚██╔╝
+#██║  ██║███████╗██║  ██║╚██████╗██║  ██║██║   ██║      ██║      ██║
+#╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝      ╚═╝
 
-import = ["~/.config/alacritty/catppuccin-mocha.toml", "~/.config/alacritty/fonts.toml"]
+# Import external configurations
+import = [
+    "~/.config/alacritty/catppuccin-mocha.toml",
+    "~/.config/alacritty/fonts.toml"
+]
 
+# Live config reload
 live_config_reload = true
 
-[cursor]
-blink_interval = 550
-unfocused_hollow = false
-thickness = 0.15
+# Environment variables
+[env]
+TERM = "xterm-256color"
+WINIT_X11_SCALE_FACTOR = "1.0"
 
-[cursor.style]
-blinking = "On"
-shape = "Block"
-
-[selection]
-save_to_clipboard = true
-
+# Window configurations
 [window]
 decorations = "none"
 dynamic_title = true
-opacity = 1
+opacity = 0.95  # Slightly transparent for better aesthetics
 dynamic_padding = true
+startup_mode = "Maximized"  # Start maximized for better workflow
 
 [window.padding]
-x = 15
-y = 15
+x = 12  # Slightly reduced padding for better space utilization
+y = 12
 
+# Scrolling configurations
 [scrolling]
-history = 10000
-multiplier = 3
+history = 20000  # Increased history for better navigation
+multiplier = 4  # Increased for faster scrolling
 
+# Cursor configurations
+[cursor]
+blink_interval = 500  # Slightly faster blink
+unfocused_hollow = true  # Better visual indicator for focus
+thickness = 0.2  # Slightly thicker cursor
+
+[cursor.style]
+blinking = "On"
+shape = "Beam"  # Changed to Beam for modern look
+
+# Selection configurations
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+# Bell configurations
 [bell]
-animation = "Linear"
+animation = "EaseOutExpo"  # Smoother animation
 duration = 0
-command = { program = "paplay", args = ["/usr/share/sounds/freedesktop/stereo/dialog-error.oga"] }
+command = { program = "notify-send", args = ["Alacritty", "Terminal bell"] }  # Modern notification
+
+# Performance-related configurations
+[debug]
+render_timer = false
+persistent_logging = false
+log_level = "Warn"
+print_events = false
+
+# Mouse configurations
+[mouse]
+hide_when_typing = true
+bindings = [
+    { mouse = "Middle", action = "PasteSelection" }
+]
+
+# Keyboard configurations
+[[keyboard.bindings]]
+key = "V"
+mods = "Control|Shift"
+action = "Paste"
+
+[[keyboard.bindings]]
+key = "C"
+mods = "Control|Shift"
+action = "Copy"
+
+[[keyboard.bindings]]
+key = "Key0"
+mods = "Control"
+action = "ResetFontSize"
+
+[[keyboard.bindings]]
+key = "Equals"
+mods = "Control"
+action = "IncreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Minus"
+mods = "Control"
+action = "DecreaseFontSize"
+
+[[keyboard.bindings]]
+key = "L"
+mods = "Control"
+action = "ClearLogNotice"
+
+[[keyboard.bindings]]
+key = "L"
+mods = "Control"
+chars = "\f"
+
+[[keyboard.bindings]]
+key = "PageUp"
+mods = "Shift"
+action = "ScrollPageUp"
+
+[[keyboard.bindings]]
+key = "PageDown"
+mods = "Shift"
+action = "ScrollPageDown"
+
+[[keyboard.bindings]]
+key = "Home"
+mods = "Shift"
+action = "ScrollToTop"
+
+[[keyboard.bindings]]
+key = "End"
+mods = "Shift"
+action = "ScrollToBottom"
