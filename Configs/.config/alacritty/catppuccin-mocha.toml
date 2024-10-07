@@ -1,75 +1,75 @@
 [colors.primary]
-background = "#1a1b26"  # Slightly darker, richer background
-foreground = "#e0e9ff"  # Brighter foreground for better contrast
-dim_foreground = "#a9b1d6"  # Adjusted dim foreground
-bright_foreground = "#f0f8ff"  # Even brighter foreground
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+dim_foreground = "#7f849c"
+bright_foreground = "#cdd6f4"
 
 [colors.cursor]
-text = "#1a1b26"  # Matching the new background
-cursor = "#bb9af7"  # Purple cursor for better visibility
+text = "#1e1e2e"
+cursor = "#f5e0dc"
 
 [colors.vi_mode_cursor]
-text = "#1a1b26"  # Matching the new background
-cursor = "#7aa2f7"  # Blue vi mode cursor
+text = "#1e1e2e"
+cursor = "#b4befe"
 
 [colors.search.matches]
-foreground = "#1a1b26"  # Matching the new background
-background = "#7aa2f7"  # Blue background for search matches
+foreground = "#1e1e2e"
+background = "#a6adc8"
 
 [colors.search.focused_match]
-foreground = "#1a1b26"  # Matching the new background
-background = "#7dcfff"  # Cyan background for focused match
+foreground = "#1e1e2e"
+background = "#a6e3a1"
 
 [colors.footer_bar]
-foreground = "#1a1b26"  # Matching the new background
-background = "#7aa2f7"  # Blue background for footer
+foreground = "#1e1e2e"
+background = "#a6adc8"
 
 [colors.hints.start]
-foreground = "#1a1b26"  # Matching the new background
-background = "#e0af68"  # Orange background for hints
+foreground = "#1e1e2e"
+background = "#f9e2af"
 
 [colors.hints.end]
-foreground = "#1a1b26"  # Matching the new background
-background = "#7aa2f7"  # Blue background for hint ends
+foreground = "#1e1e2e"
+background = "#a6adc8"
 
 [colors.selection]
-text = "#1a1b26"  # Matching the new background
-background = "#515c7e"  # Subdued selection background
+text = "#1e1e2e"
+background = "#f5e0dc"
 
 [colors.normal]
-black = "#32344a"
-red = "#f7768e"
-green = "#9ece6a"
-yellow = "#e0af68"
-blue = "#7aa2f7"
-magenta = "#ad8ee6"
-cyan = "#449dab"
-white = "#787c99"
+black = "#45475a"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#bac2de"
 
 [colors.bright]
-black = "#444b6a"
-red = "#ff7a93"
-green = "#b9f27c"
-yellow = "#ff9e64"
-blue = "#7da6ff"
-magenta = "#bb9af7"
-cyan = "#0db9d7"
-white = "#acb0d0"
+black = "#585b70"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#a6adc8"
 
 [colors.dim]
-black = "#2a2b3d"
-red = "#d5667b"
-green = "#8ab85c"
-yellow = "#c29a5b"
-blue = "#6a8bd9"
-magenta = "#9879c9"
-cyan = "#3b8694"
-white = "#666b85"
+black = "#45475a"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#bac2de"
 
 [[colors.indexed_colors]]
 index = 16
-color = "#ff9e64"
+color = "#fab387"
 
 [[colors.indexed_colors]]
 index = 17
-color = "#db4b4b"
+color = "#f5e0dc"
