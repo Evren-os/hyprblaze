@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-
 #// set variables
 
 export scrDir="$(dirname "$(realpath "$0")")"
@@ -14,7 +13,6 @@ if [ -z "${wallbashImg}" ] || [ ! -f "${wallbashImg}" ] ; then
     echo "Error: Input wallpaper not found!"
     exit 1
 fi
-
 wallbashOut="${dcolDir}/$(set_hash "${wallbashImg}").dcol"
 
 if [ ! -f "${wallbashOut}" ] ; then
@@ -23,6 +21,11 @@ fi
 
 set -a
 source "${wallbashOut}"
+if [ -f "${hydeThemeDir}/theme.dcol" ] && [ "${enableWallDcol}" -eq 0 ]  ; then
+    source "${hydeThemeDir}/theme.dcol"
+    echo "[theme] Overriding dominant colors from \"${hydeTheme}\""
+    echo "[note] Remove \"${hydeThemeDir}/theme.dcol\" to use wallpaper dominant colors"
+fi
 [ "${dcol_mode}" == "dark" ] && dcol_invt="light" || dcol_invt="dark"
 set +a
 
@@ -250,13 +253,12 @@ fi
 
 #  Theme mode: detects the color-scheme set in hypr.theme and falls back if nothing is parsed.
 if [ "${enableWallDcol}" -eq 0 ]; then
-    colorScheme="$({ grep -q "^[[:space:]]*\$COLOR-SCHEME\s*=" "${hydeThemeDir}/hypr.theme" && grep "^[[:space:]]*\$COLOR-SCHEME\s*=" "${hydeThemeDir}/hypr.theme" | cut -d '=' -f2 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' ;} || 
+    colorScheme="$({ grep -q "^[[:space:]]*\$COLOR-SCHEME\s*=" "${hydeThemeDir}/hypr.theme" && grep "^[[:space:]]*\$COLOR-SCHEME\s*=" "${hydeThemeDir}/hypr.theme" | cut -d '=' -f2 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' ;} ||
                     grep 'gsettings set org.gnome.desktop.interface color-scheme' "${hydeThemeDir}/hypr.theme" | awk -F "'" '{print $((NF - 1))}')"
-    colorScheme=${colorScheme:-$(gsettings get org.gnome.desktop.interface color-scheme)} 
+    colorScheme=${colorScheme:-$(gsettings get org.gnome.desktop.interface color-scheme)}
     # should be declared explicitly so we can easily debug
     grep -q "dark" <<< "${colorScheme}" && enableWallDcol=2
-    grep -q "light" <<< "${colorScheme}" && enableWallDcol=3 
+    grep -q "light" <<< "${colorScheme}" && enableWallDcol=3
 fi
 
 find "${wallbashDir}/Wall-Ways" -type f -name "*.dcol" | parallel fn_wallbash {}
-
