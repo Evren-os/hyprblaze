@@ -78,7 +78,7 @@ kitty                                                  # terminal
 dolphin                                                # kde file manager
 ark                                                    # kde file archiver
 neovim                                                    # terminal text editor
-# visual-studio-code-bin                                                   # ide text editor
+visual-studio-code-bin                                                   # ide text editor
 alacritty
 qbittorrent
 viewnior
