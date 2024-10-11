@@ -3,7 +3,7 @@
 
 > [!CAUTION]
 > **Please note:** These dotfiles are highly personalized for my setup and may not work as expected on your system. Use them at your own discretion.
-> The configurations and scripts in this repository are specifically tailored for my workflow and preferences. They may require adjustments or additional dependencies if you choose to use them. I recommend reviewing the > scripts and configuration files thoroughly before applying them to your system.
+> The configurations and scripts in this repository are specifically tailored for my workflow and preferences. They may require adjustments or additional dependencies if you choose to use them. I recommend reviewing the scripts and configuration files thoroughly before applying them to your system.
 
 ###### *<div align="right"><sub>// design by t2</sub></div>*
 <div align = center>
