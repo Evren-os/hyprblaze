@@ -1,217 +1,208 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 
-#==============================================================================
-# HyDE Advanced Setup Script for Arch Linux
-# Author: Claude Systems Engineer
-# Description: Professional-grade setup script for HyDE environment
-#==============================================================================
+# Exit on error
+set -e
 
-#==============================================================================
-# INITIALIZATION
-#==============================================================================
+# Color definitions
+RED="\033[0;31m"
+GREEN="\033[0;32m"
+YELLOW="\033[0;33m"
+BLUE="\033[0;34m"
+NC="\033[0m" # No Color
 
-set -euo pipefail  # Fail fast and safely
+# Paths
+HYDE_CONFIG_DIR="$HOME/HyDE/Configs"
+HYDE_SCRIPTS_DIR="$HOME/HyDE/Scripts"
+CLONE_DIR="$HOME/Clone"
+CONFIG_DIR="$HOME/.config"
+THEMES_SOURCE_DIR="$CLONE_DIR/hyde-themes"
+THEMES_DEST_DIR="$CONFIG_DIR/hyde/themes"
 
-# Terminal colors
-readonly RED=$'\e[1;31m'
-readonly GREEN=$'\e[1;32m'
-readonly BLUE=$'\e[1;34m'
-readonly YELLOW=$'\e[1;33m'
-readonly MAGENTA=$'\e[1;35m'
-readonly NC=$'\e[0m'
-
-# Critical paths
-readonly HOME_DIR="$HOME"
-readonly CLONE_DIR="$HOME_DIR/Clone"
-readonly HYDE_DIR="$HOME_DIR/HyDE"
-readonly CONFIG_DIR="$HOME_DIR/.config"
-readonly HYDE_THEMES_DIR="$CLONE_DIR/hyde-themes"
-readonly FONTS_SRC="$HYDE_DIR/Source/misc/fonts"
-readonly FONTS_DEST="$HOME_DIR/.local/share/fonts"
-
-# Configuration directories to process
-readonly CONFIG_DIRS=("alacritty" "mpv" "hypr" "wezterm")
-
-#==============================================================================
-# UTILITY FUNCTIONS
-#==============================================================================
-
-log() {
-    local level="$1"
-    local message="$2"
-    local color
-
-    case "$level" in
-        "INFO") color="$BLUE";;
-        "SUCCESS") color="$GREEN";;
-        "WARNING") color="$YELLOW";;
-        "ERROR") color="$RED";;
-        *) color="$NC";;
-    esac
-
-    printf "${color}[%s]${NC} %s\n" "$level" "$message"
+# Utility functions
+print_color() {
+    printf "${1}${2}${NC}\n"
 }
 
-error_exit() {
-    log "ERROR" "$1"
-    exit 1
+info() { print_color "$BLUE" "[INFO] $1"; }
+success() { print_color "$GREEN" "[SUCCESS] $1"; }
+warning() { print_color "$YELLOW" "[WARNING] $1"; }
+error() { print_color "$RED" "[ERROR] $1"; exit 1; }
+
+confirm() {
+    read -q "REPLY?${1} (y/N): "
+    echo
+    [[ "$REPLY" =~ ^[Yy]$ ]]
 }
 
-confirm_action() {
-    local prompt="$1"
-    local default="${2:-Y}"
-
-    while true; do
-        read -rp "$(printf "${MAGENTA}%s [Y/n]${NC} " "$prompt")" response
-        case "${response:-$default}" in
-            [Yy]* ) return 0;;
-            [Nn]* ) return 1;;
-            * ) log "WARNING" "Please answer yes or no.";;
-        esac
-    done
+ensure_dir() {
+    [[ -d "$1" ]] || mkdir -p "$1" || error "Failed to create directory: $1"
 }
 
-check_dependencies() {
-    local deps=("git" "fc-cache")
-    for dep in "${deps[@]}"; do
-        if ! command -v "$dep" >/dev/null 2>&1; then
-            error_exit "Required dependency not found: $dep"
-        fi
-    done
-}
+# function for cursor installation
+install_catppuccin_cursors() {
+    info "Setting up Catppuccin cursors..."
 
-ensure_directory() {
-    local dir="$1"
-    if [[ ! -d "$dir" ]]; then
-        log "INFO" "Creating directory: $dir"
-        mkdir -p "$dir" || error_exit "Failed to create directory: $dir"
+    if confirm "Would you like to install Catppuccin Mocha Mauve cursors?"; then
+        local temp_dir=$(mktemp -d)
+        cd "$temp_dir" || error "Failed to create temporary directory"
+
+        info "Downloading Catppuccin cursors..."
+        sudo curl -LOsS https://github.com/catppuccin/cursors/releases/download/v0.3.1/catppuccin-mocha-mauve-cursors.zip || error "Failed to download cursors"
+
+        info "Installing cursors..."
+        sudo unzip catppuccin-mocha-mauve-cursors.zip -d /usr/share/icons/ || error "Failed to extract cursors"
+
+        # Cleanup
+        cd - >/dev/null
+        rm -rf "$temp_dir"
+
+        success "Catppuccin cursors installed successfully"
     fi
 }
 
-#==============================================================================
-# COMPONENT SETUP FUNCTIONS
-#==============================================================================
+# Core functions
+copy_config_files() {
+    info "Copying configuration files..."
 
-setup_directories() {
-    log "INFO" "Setting up required directories..."
-    ensure_directory "$CLONE_DIR"
-    ensure_directory "$CONFIG_DIR"
-    ensure_directory "$FONTS_DEST"
-}
+    [[ -d "$HYDE_CONFIG_DIR/.config" ]] || error "Source config directory not found: $HYDE_CONFIG_DIR/.config"
 
-clone_themes_repo() {
-    if [[ ! -d "$HYDE_THEMES_DIR" ]]; then
-        log "INFO" "Cloning hyde-themes repository..."
-        git clone --depth 1 https://github.com/hyde-themes/hyde-themes.git "$HYDE_THEMES_DIR" ||
-            error_exit "Failed to clone hyde-themes repository"
-    else
-        if confirm_action "hyde-themes repository already exists. Update it?"; then
-            log "INFO" "Updating hyde-themes repository..."
-            git -C "$HYDE_THEMES_DIR" pull || error_exit "Failed to update hyde-themes repository"
-        fi
-    fi
-}
+    local dirs=("mpv" "alacritty" "wezterm" "hypr")
 
-copy_configs() {
-    log "INFO" "Copying configuration files..."
-    for dir in "${CONFIG_DIRS[@]}"; do
-        local source_dir="$HYDE_DIR/Configs/.config/$dir"
-        local dest_dir="$CONFIG_DIR/$dir"
-
-        if [[ -d "$source_dir" ]]; then
-            log "INFO" "Processing $dir configuration..."
-            if [[ -d "$dest_dir" ]]; then
-                if confirm_action "Existing $dir config found. Override?"; then
-                    rm -rf "$dest_dir"
-                else
-                    log "WARNING" "Skipping $dir configuration..."
-                    continue
-                fi
-            fi
-            cp -r "$source_dir" "$CONFIG_DIR/" || error_exit "Failed to copy $dir configuration"
-            log "SUCCESS" "$dir configuration copied successfully"
+    for dir in $dirs; do
+        if [[ -d "$HYDE_CONFIG_DIR/.config/$dir" ]]; then
+            cp -rf "$HYDE_CONFIG_DIR/.config/$dir" "$CONFIG_DIR/" || error "Failed to copy $dir"
+            success "Copied $dir configuration"
         else
-            log "WARNING" "$dir configuration not found in source"
+            warning "$dir not found in source directory"
         fi
     done
+}
+
+setup_zsh_config() {
+    info "Setting up Zsh configuration..."
+
+    local zshrc_source="$HYDE_CONFIG_DIR/.zshrc"
+    [[ -f "$zshrc_source" ]] || error ".zshrc not found in $HYDE_CONFIG_DIR"
+
+    cp -f "$zshrc_source" "$HOME/.zshrc" || error "Failed to copy .zshrc"
+    source "$HOME/.zshrc" || warning "Failed to source .zshrc"
+    success "Zsh configuration updated"
+}
+
+setup_grub_theme() {
+    confirm "Would you like to set up the GRUB theme?" || return 0
+
+    local grub_themes_dir="$CLONE_DIR/grub2-themes"
+
+    if [[ ! -d "$grub_themes_dir" ]]; then
+        git clone --depth 1 https://github.com/vinceliuice/grub2-themes.git "$grub_themes_dir" ||
+            error "Failed to clone GRUB themes repository"
+    fi
+
+    cd "$grub_themes_dir" || error "Failed to change to GRUB themes directory"
+
+    if confirm "Would you like to edit the GRUB configuration file?"; then
+        sudo nano /etc/default/grub
+    fi
+
+    sudo ./install.sh -t whitesur -i whitesur || error "Failed to install GRUB theme"
+    success "GRUB theme installed"
+}
+
+mount_windows_partition() {
+    confirm "Would you like to mount a Windows partition?" || return 0
+
+    command -v ntfs-3g >/dev/null 2>&1 || {
+        info "Installing ntfs-3g..."
+        sudo pacman -S --noconfirm ntfs-3g || error "Failed to install ntfs-3g"
+    }
+
+    local win_partition="/dev/nvme0n1p3"
+    lsblk | grep -q "$win_partition" || error "Windows partition $win_partition not found"
+
+    local uuid=$(sudo blkid -s UUID -o value "$win_partition")
+    [[ -n "$uuid" ]] || error "Failed to get UUID for Windows partition"
+
+    sudo mkdir -p /mnt/windows || error "Failed to create Windows mount point"
+    sudo mount -t ntfs-3g "$win_partition" /mnt/windows || error "Failed to mount Windows partition"
+
+    if confirm "Would you like to add the Windows partition to fstab?"; then
+        local fstab_entry="UUID=$uuid /mnt/windows ntfs-3g rw,auto,user,fmask=0022,dmask=0022,uid=1000,gid=1000,windows_names,locale=en_US.utf8,big_writes,async,noatime 0 0"
+        echo "$fstab_entry" | sudo tee -a /etc/fstab >/dev/null || error "Failed to update fstab"
+        sudo mount -a || warning "Failed to remount all partitions"
+    fi
+
+    read "win_username?Please enter your Windows username: "
+    if [[ -n "$win_username" ]]; then
+        ln -s "/mnt/windows/Users/$win_username" "$HOME/windows" ||
+            warning "Failed to create symbolic link to Windows user directory"
+    fi
+
+    success "Windows partition mounted successfully"
 }
 
 setup_sysfetch() {
-    local sysfetch_source="$HYDE_DIR/Scripts/sysfetch"
-    local sysfetch_dest="/usr/local/bin/sysfetch"
+    info "Setting up sysfetch..."
 
-    if [[ -f "$sysfetch_source" ]]; then
-        log "INFO" "Setting up sysfetch..."
-        chmod +x "$sysfetch_source" || error_exit "Failed to make sysfetch executable"
-        sudo ln -sf "$sysfetch_source" "$sysfetch_dest" || error_exit "Failed to create symbolic link for sysfetch"
-        log "SUCCESS" "sysfetch setup completed"
-    else
-        error_exit "sysfetch script not found at $sysfetch_source"
-    fi
+    local sysfetch_path="$HYDE_SCRIPTS_DIR/sysfetch"
+    [[ -f "$sysfetch_path" ]] || error "sysfetch script not found in $HYDE_SCRIPTS_DIR"
+
+    chmod +x "$sysfetch_path" || error "Failed to make sysfetch executable"
+    sudo ln -sf "$sysfetch_path" /usr/local/bin/sysfetch || error "Failed to create symbolic link for sysfetch"
+
+    success "sysfetch setup completed. You can now run 'sysfetch' from anywhere in the terminal."
 }
 
-process_wallpapers() {
-    log "INFO" "Processing theme wallpapers..."
-    local processed_count=0
+copy_wallpapers() {
+    info "Setting up wallpapers..."
 
-    for theme_folder in "$HYDE_THEMES_DIR/themes"/*; do
-        if [[ -d "$theme_folder" ]]; then
-            local theme_name=$(basename "$theme_folder")
-            local dest_wallpaper_dir="$CONFIG_DIR/hyde/themes/$theme_name/wallpapers"
+    ensure_dir "$CLONE_DIR"
 
-            if [[ -d "$dest_wallpaper_dir" ]]; then
-                if [[ -n "$(ls -A "$theme_folder")" ]]; then
-                    log "INFO" "Processing wallpapers for theme: $theme_name"
-                    while IFS= read -r -d '' file; do
-                        if file "$file" | grep -qi "image"; then
-                            cp -f "$file" "$dest_wallpaper_dir/" && ((processed_count++)) ||
-                                log "WARNING" "Failed to copy wallpaper: $file"
-                        fi
-                    done < <(find "$theme_folder" -type f -print0)
+    if [[ ! -d "$THEMES_SOURCE_DIR" ]]; then
+        info "Cloning hyde-themes repository..."
+        git clone --depth 1 https://github.com/hyde-themes/hyde-themes.git "$THEMES_SOURCE_DIR" ||
+            error "Failed to clone hyde-themes repository"
+    fi
+
+    for theme_folder in "$THEMES_SOURCE_DIR/themes"/*(/); do
+        local theme_name=${theme_folder:t}
+        local dest_wallpaper_dir="$THEMES_DEST_DIR/$theme_name/wallpapers"
+
+        if [[ -d "$dest_wallpaper_dir" ]]; then
+            info "Processing theme: $theme_name"
+
+            find "$theme_folder" -type f -print0 | while IFS= read -r -d '' file; do
+                if file "$file" | grep -qi "image"; then
+                    cp -f "$file" "$dest_wallpaper_dir/" && success "Copied: ${file:t}"
                 fi
-            fi
+            done
+        else
+            warning "Destination folder for theme '$theme_name' does not exist. Skipping..."
         fi
     done
 
-    log "SUCCESS" "Processed $processed_count wallpapers"
+    success "Wallpaper copy process completed"
 }
 
-setup_fonts() {
-    log "INFO" "Setting up fonts..."
-    if [[ ! -d "$FONTS_SRC" ]]; then
-        error_exit "Fonts source directory not found: $FONTS_SRC"
-    fi
-
-    cp -r "$FONTS_SRC"/* "$FONTS_DEST/" || error_exit "Failed to copy fonts"
-    log "INFO" "Updating font cache..."
-    fc-cache -fv || error_exit "Failed to update font cache"
-    log "SUCCESS" "Fonts setup completed"
-}
-
-#==============================================================================
-# MAIN EXECUTION
-#==============================================================================
-
+# Main execution
 main() {
-    log "INFO" "Starting HyDE Advanced Setup..."
+    info "Welcome to the HyDE Setup Script!"
+    info "Created by Sayeed Mahmood Evrenos"
+    echo
 
-    # Check for required dependencies
-    check_dependencies
+    ensure_dir "$CLONE_DIR"
+    ensure_dir "$CONFIG_DIR"
 
-    # Setup process
-    setup_directories
-    clone_themes_repo
-    copy_configs
+    copy_config_files
+    setup_zsh_config
+    setup_grub_theme
+    mount_windows_partition
     setup_sysfetch
-    process_wallpapers
-    setup_fonts
+    copy_wallpapers
+    install_catppuccin_cursors  # Add this line to include the new function
 
-    log "SUCCESS" "✨ HyDE setup completed successfully!"
-    log "INFO" "You can now run 'sysfetch' from anywhere in the terminal."
+    success "All setup tasks completed successfully!"
 }
 
-# Script execution
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    trap 'error_exit "An unexpected error occurred. Exiting..."' ERR
-    main "$@"
-fi
+# Run main function
+main "$@"
