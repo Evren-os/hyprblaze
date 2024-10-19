@@ -109,38 +109,6 @@ setup_grub_theme() {
     success "GRUB theme installed"
 }
 
-mount_windows_partition() {
-    confirm "Would you like to mount a Windows partition?" || return 0
-
-    command -v ntfs-3g >/dev/null 2>&1 || {
-        info "Installing ntfs-3g..."
-        sudo pacman -S --noconfirm ntfs-3g || error "Failed to install ntfs-3g"
-    }
-
-    local win_partition="/dev/nvme0n1p3"
-    lsblk | grep -q "$win_partition" || error "Windows partition $win_partition not found"
-
-    local uuid=$(sudo blkid -s UUID -o value "$win_partition")
-    [[ -n "$uuid" ]] || error "Failed to get UUID for Windows partition"
-
-    sudo mkdir -p /mnt/windows || error "Failed to create Windows mount point"
-    sudo mount -t ntfs-3g "$win_partition" /mnt/windows || error "Failed to mount Windows partition"
-
-    if confirm "Would you like to add the Windows partition to fstab?"; then
-        local fstab_entry="UUID=$uuid /mnt/windows ntfs-3g rw,auto,user,fmask=0022,dmask=0022,uid=1000,gid=1000,windows_names,locale=en_US.utf8,big_writes,async,noatime 0 0"
-        echo "$fstab_entry" | sudo tee -a /etc/fstab >/dev/null || error "Failed to update fstab"
-        sudo mount -a || warning "Failed to remount all partitions"
-    fi
-
-    read "win_username?Please enter your Windows username: "
-    if [[ -n "$win_username" ]]; then
-        ln -s "/mnt/windows/Users/$win_username" "$HOME/windows" ||
-            warning "Failed to create symbolic link to Windows user directory"
-    fi
-
-    success "Windows partition mounted successfully"
-}
-
 setup_sysfetch() {
     info "Setting up sysfetch..."
 
@@ -196,7 +164,6 @@ main() {
     copy_config_files
     setup_zsh_config
     setup_grub_theme
-    mount_windows_partition
     setup_sysfetch
     copy_wallpapers
     install_catppuccin_cursors  # Add this line to include the new function
