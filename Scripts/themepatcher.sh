@@ -55,7 +55,7 @@ Fav_Theme="$1"
 
 if [ -d "$2" ]; then
     Theme_Dir="$2"
-else
+else 
     Git_Repo=${2%/}
     if echo "$Git_Repo" | grep -q "/tree/"; then
         branch=${Git_Repo#*tree/}

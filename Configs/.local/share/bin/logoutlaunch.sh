@@ -57,9 +57,9 @@ export fntSize=$(( y_mon * 2 / 100 ))
 [ -f "${cacheDir}/wall.dcol" ] && source "${cacheDir}/wall.dcol"
 #  Theme mode: detects the color-scheme set in hypr.theme and falls back if nothing is parsed.
 if [ "${enableWallDcol}" -eq 0 ]; then
-    colorScheme="$({ grep -q "^[[:space:]]*\$COLOR[-_]SCHEME\s*=" "${hydeThemeDir}/hypr.theme" && grep "^[[:space:]]*\$COLOR[-_]SCHEME\s*=" "${hydeThemeDir}/hypr.theme" | cut -d '=' -f2 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' ;} ||
+    colorScheme="$({ grep -q "^[[:space:]]*\$COLOR[-_]SCHEME\s*=" "${hydeThemeDir}/hypr.theme" && grep "^[[:space:]]*\$COLOR[-_]SCHEME\s*=" "${hydeThemeDir}/hypr.theme" | cut -d '=' -f2 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' ;} || 
                         grep 'gsettings set org.gnome.desktop.interface color-scheme' "${hydeThemeDir}/hypr.theme" | awk -F "'" '{print $((NF - 1))}')"
-    colorScheme=${colorScheme:-$(gsettings get org.gnome.desktop.interface color-scheme)}
+    colorScheme=${colorScheme:-$(gsettings get org.gnome.desktop.interface color-scheme)} 
     # should be declared explicitly so we can easily debug
     grep -q "dark" <<< "${colorScheme}" && dcol_mode="dark"
     grep -q "light" <<< "${colorScheme}" && dcol_mode="light"
@@ -82,3 +82,4 @@ wlStyle="$(envsubst < $wlTmplt)"
 #// launch wlogout
 
 wlogout -b "${wlColms}" -c 0 -r 0 -m 0 --layout "${wLayout}" --css <(echo "${wlStyle}") --protocol layer-shell
+
