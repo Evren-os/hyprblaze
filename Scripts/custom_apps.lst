@@ -1,6 +1,6 @@
 # --------------------------------------------------- // Pacman Packages
 aria2
-#telegram-desktop
+telegram-desktop
 proxychains-ng
 github-cli
 cmatrix
@@ -8,8 +8,11 @@ cmatrix
 
 # --------------------------------------------------- // AUR Packages
 spotify
-#signal-desktop
-#edex-ui-bin
-#upscayl-bin
+signal-desktop
+edex-ui-bin
+upscayl-bin
 ttf-maple
+affine-bin
+qmplay2
+nomacs-qt6-git
 # nekoray-bin
