@@ -22,7 +22,9 @@ fzf                                                    # Command-line fuzzy find
 tree                                                   # Directory tree viewer
 ttf-jetbrains-mono-nerd                               # JetBrains Mono font
 wlsunset                                              # Night color temperature adjustment
-zip, unzip, unrar                                     # Archive utilities
+zip
+unzip
+unrar                                     # Archive utilities
 flatpak                                                # Application containerization
 ttf-twemoji                                           # Twemoji font for emojis
 vulkan-radeon                                         # Vulkan graphics API for AMD
@@ -76,7 +78,7 @@ kitty                                                  # Terminal emulator
 dolphin                                                # KDE file manager
 ark                                                    # KDE archive manager
 neovim                                                 # Terminal text editor
-visual-studio-code-bin                                 # IDE for development
+# visual-studio-code-bin                                 # IDE for development
 alacritty                                              # GPU-accelerated terminal
 qbittorrent                                           # BitTorrent client
 zen-browser-avx2-bin                                   # Zen browser with AVX2 support
@@ -90,6 +92,7 @@ lsd|fish                                               # Enhanced file lister fo
 starship|fish                                         # Customizable shell prompt for Fish
 fastfetch                                              # System information display
 # pokemon-colorscripts-git|zsh                         # Pokémon sprite display (commented out)
+pokeget                                                # pokemon-colorscripts-git replacement
 
 # --------------------------------------------------- // HyDE
 hyde-cli-git                                           # CLI tool for managing HyDE
