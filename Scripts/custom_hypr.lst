@@ -22,6 +22,7 @@ fzf                                                    # Command-line fuzzy find
 tree                                                   # Directory tree viewer
 ttf-jetbrains-mono-nerd                               # JetBrains Mono font
 wlsunset                                              # Night color temperature adjustment
+yt-dlp
 zip
 unzip
 unrar                                     # Archive utilities
@@ -81,8 +82,9 @@ neovim                                                 # Terminal text editor
 # visual-studio-code-bin                                 # IDE for development
 alacritty                                              # GPU-accelerated terminal
 qbittorrent                                           # BitTorrent client
-zen-browser-avx2-bin                                   # Zen browser with AVX2 support
+aur/zen-browser-avx2-bin                                   # Zen browser with AVX2 support
 yazi                                                   # Notetaking application
+qalculate-gtk
 
 # --------------------------------------------------- // Shell
 eza|zsh                                                # Enhanced file lister for Zsh
