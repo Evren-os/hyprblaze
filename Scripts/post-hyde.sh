@@ -66,7 +66,7 @@ copy_config_files() {
 
     [[ -d "$HYDE_CONFIG_DIR/.config" ]] || error "Source config directory not found: $HYDE_CONFIG_DIR/.config"
 
-    local dirs=("mpv" "alacritty" "wezterm" "hypr")
+    local dirs=("mpv" "alacritty" "wezterm" "hypr" "ohmyposh")
 
     for dir in $dirs; do
         if [[ -d "$HYDE_CONFIG_DIR/.config/$dir" ]]; then

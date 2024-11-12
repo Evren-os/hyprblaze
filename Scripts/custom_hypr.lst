@@ -89,7 +89,7 @@ qalculate-gtk
 # --------------------------------------------------- // Shell
 eza|zsh                                                # Enhanced file lister for Zsh
 oh-my-zsh-git|zsh                                      # Zsh plugin manager
-zsh-theme-powerlevel10k-git|zsh oh-my-zsh-git        # Powerlevel10k theme for Zsh
+oh-my-posh-bin|zsh oh-my-zsh-git        # Powerlevel10k theme for Zsh
 lsd|fish                                               # Enhanced file lister for Fish
 starship|fish                                         # Customizable shell prompt for Fish
 fastfetch                                              # System information display
