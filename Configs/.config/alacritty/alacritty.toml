@@ -1,128 +1,106 @@
-# █████╗ ██╗      █████╗  ██████╗██████╗ ██╗████████╗████████╗██╗   ██╗
-#██╔══██╗██║     ██╔══██╗██╔════╝██╔══██╗██║╚══██╔══╝╚══██╔══╝╚██╗ ██╔╝
-#███████║██║     ███████║██║     ██████╔╝██║   ██║      ██║    ╚████╔╝
-#██╔══██║██║     ██╔══██║██║     ██╔══██╗██║   ██║      ██║     ╚██╔╝
-#██║  ██║███████╗██║  ██║╚██████╗██║  ██║██║   ██║      ██║      ██║
-#╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝      ╚═╝
 
-# Import external configurations
-import = [
-    "~/.config/alacritty/catppuccin-mocha.toml",
-    "~/.config/alacritty/fonts.toml"
-]
+## ENVIRONMENT ----------------------------------------------------
 
-# Live config reload
-live_config_reload = true
-
-# Environment variables
+## All key-value pairs in the [env] section will be added as environment variables for any process spawned
+## by Alacritty, including its shell. Some entries may override variables set by alacritty itself.
 [env]
-TERM = "xterm-256color"
+TERM = "alacritty"
 WINIT_X11_SCALE_FACTOR = "1.0"
 
-# Window configurations
+## WINDOW ---------------------------------------------------------
 [window]
-decorations = "none"
-dynamic_title = true
-opacity = 0.95  # Slightly transparent for better aesthetics
+position = "None"
 dynamic_padding = true
-startup_mode = "Maximized"  # Start maximized for better workflow
+decorations = "full"
+opacity = 0.80
+blur = false
+startup_mode = "Windowed"
+dynamic_title = true
+class = { instance = "Alacritty", general = "Alacritty" }
+decorations_theme_variant = "None"
 
+## Number of lines/columns (not pixels) in the terminal.
+[window.dimensions]
+columns = 95
+lines = 24
+
+## Blank space added around the window in pixels.
 [window.padding]
-x = 12  # Slightly reduced padding for better space utilization
+x = 12
 y = 12
 
-# Scrolling configurations
+## SCROLLING ------------------------------------------------------
 [scrolling]
-history = 20000  # Increased history for better navigation
-multiplier = 4  # Increased for faster scrolling
+history = 10000
+multiplier = 3
 
-# Cursor configurations
-[cursor]
-blink_interval = 500  # Slightly faster blink
-unfocused_hollow = true  # Better visual indicator for focus
-thickness = 0.2  # Slightly thicker cursor
+## BELL -----------------------------------------------------------
+[bell]
+animation = "Linear"
+duration = 20
+command = { program = "paplay", args = ["/usr/share/sounds/freedesktop/stereo/dialog-error.oga"] }
 
-[cursor.style]
-blinking = "On"
-shape = "Beam"  # Changed to Beam for modern look
-
-# Selection configurations
+## SELECTION ------------------------------------------------------
 [selection]
 save_to_clipboard = true
-semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
-# Bell configurations
-[bell]
-animation = "EaseOutExpo"  # Smoother animation
-duration = 0
-command = { program = "notify-send", args = ["Alacritty", "Terminal bell"] }  # Modern notification
+## CURSOR ---------------------------------------------------------
+[cursor]
+vi_mode_style = "None"
+blink_interval = 750
+blink_timeout = 5
+unfocused_hollow = false
+thickness = 0.15
 
-# Performance-related configurations
+[cursor.style]
+shape = "Block"
+blinking = "On"
+
+## MOUSE ----------------------------------------------------------
+[mouse]
+hide_when_typing = false
+
+## HINTS ----------------------------------------------------------
+[[hints.enabled]]
+command         = "xdg-open"
+hyperlinks      = true
+post_processing = true
+persist         = false
+mouse.enabled   = true
+binding         = { key = "U", mods = "Control|Shift" }
+regex           = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
+
+## DEBUG ----------------------------------------------------------
 [debug]
 render_timer = false
 persistent_logging = false
 log_level = "Warn"
+renderer = "None"
 print_events = false
+highlight_damage = false
+prefer_egl = false
 
-# Mouse configurations
-[mouse]
-hide_when_typing = true
-bindings = [
-    { mouse = "Middle", action = "PasteSelection" }
-]
+[general]
 
-# Keyboard configurations
-[[keyboard.bindings]]
-key = "V"
-mods = "Control|Shift"
-action = "Paste"
+## You can set shell.program to the path of your favorite shell, e.g. /bin/zsh.
+## Entries in shell.args are passed as arguments to the shell.
+#shell = { program = "/bin/zsh", args = ["--login"] }
 
-[[keyboard.bindings]]
-key = "C"
-mods = "Control|Shift"
-action = "Copy"
+## Directory the shell is started in. When this is unset, or "None",
+## the working directory of the parent process will be used.
+#working_directory = "None"
 
-[[keyboard.bindings]]
-key = "Key0"
-mods = "Control"
-action = "ResetFontSize"
+## Live config reload
+live_config_reload = true
 
-[[keyboard.bindings]]
-key = "Equals"
-mods = "Control"
-action = "IncreaseFontSize"
+## Offer IPC using alacritty msg
+ipc_socket = true
+## Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
+##
+## Configuration for Alacritty, the GPU enhanced terminal emulator.
+## It's a very basic and simple config file, for full configuration, Run `man 5 alacritty`
 
-[[keyboard.bindings]]
-key = "Minus"
-mods = "Control"
-action = "DecreaseFontSize"
+## GENERAL --------------------------------------------------------
 
-[[keyboard.bindings]]
-key = "L"
-mods = "Control"
-action = "ClearLogNotice"
-
-[[keyboard.bindings]]
-key = "L"
-mods = "Control"
-chars = "\f"
-
-[[keyboard.bindings]]
-key = "PageUp"
-mods = "Shift"
-action = "ScrollPageUp"
-
-[[keyboard.bindings]]
-key = "PageDown"
-mods = "Shift"
-action = "ScrollPageDown"
-
-[[keyboard.bindings]]
-key = "Home"
-mods = "Shift"
-action = "ScrollToTop"
-
-[[keyboard.bindings]]
-key = "End"
-mods = "Shift"
-action = "ScrollToBottom"
+## Import additional configuration files.
+import = ["~/.config/alacritty/colors.toml", "~/.config/alacritty/fonts.toml"]

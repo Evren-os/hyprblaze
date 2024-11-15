@@ -28,6 +28,7 @@ zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light chrissicool/zsh-256color
+zinit light Aloxaf/fzf-tab
 
 #############################################################
 # Package Management Functions
@@ -146,7 +147,7 @@ alias c='clear'
 alias mkdir='mkdir -p'
 
 # Applications
-alias vc='code'
+alias code='codium'
 alias docker-start="sudo systemctl start docker"
 alias docker-stop="sudo systemctl stop docker"
 
@@ -175,7 +176,7 @@ turbofetch
 #############################################################
 
 # start_time=$(date +%s%3N)  # Milliseconds precision
-# rufet
+# turbofetch
 # end_time=$(date +%s%3N)
 # echo "Startup time with fetch tool: $((end_time - start_time)) ms" >> ~/fetch_startup_time.log
 
