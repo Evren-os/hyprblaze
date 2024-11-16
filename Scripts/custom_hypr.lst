@@ -79,10 +79,10 @@ kitty                                                  # Terminal emulator
 dolphin                                                # KDE file manager
 ark                                                    # KDE archive manager
 neovim                                                 # Terminal text editor
-# visual-studio-code-bin                                 # IDE for development
+visual-studio-code-bin                                 # IDE for development
 alacritty                                              # GPU-accelerated terminal
 qbittorrent                                           # BitTorrent client
-aur/zen-browser-avx2-bin                                   # Zen browser with AVX2 support
+zen-browser-avx2-bin                                   # Zen browser with AVX2 support
 yazi                                                   # Notetaking application
 qalculate-gtk
 

@@ -9,20 +9,20 @@ cmatrix
 # --------------------------------------------------- // AUR Packages
 spotify
 signal-desktop
-edex-ui-bin
-upscayl-bin
+# edex-ui-bin
+# upscayl-bin
 ttf-maple
 affine-bin
-qmplay2
+qmplay2-git
 nomacs-qt6-git
 brave-bin
-spotube-bin
-filen-desktop-git
-vscodium
+# spotube-bin
+# filen-desktop-git
+# vscodium
 ttf-ms-win11-auto
 freedownloadmanager
-nemo
-nemo-fileroller
-nemo-preview
+# nemo
+# nemo-fileroller
+# nemo-preview
 legcord-bin
 # nekoray-bin
