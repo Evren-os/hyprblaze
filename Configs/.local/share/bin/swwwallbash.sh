@@ -229,6 +229,7 @@ fn_wallbash () {
 
 export -f fn_wallbash
 
+[ -n "$HYPRLAND_INSTANCE_SIGNATURE" ] &&  hyprctl keyword misc:disable_autoreload 1 -q && trap 'hyprctl reload -q && echo "[swwwallbash] reload :: Hyprland"' EXIT
 
 #// switch theme <//> wall based colors
 
@@ -253,12 +254,12 @@ fi
 
 #  Theme mode: detects the color-scheme set in hypr.theme and falls back if nothing is parsed.
 if [ "${enableWallDcol}" -eq 0 ]; then
-    colorScheme="$({ grep -q "^[[:space:]]*\$COLOR-SCHEME\s*=" "${hydeThemeDir}/hypr.theme" && grep "^[[:space:]]*\$COLOR-SCHEME\s*=" "${hydeThemeDir}/hypr.theme" | cut -d '=' -f2 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' ;} || 
+    colorScheme="$({ grep -q "^[[:space:]]*\$COLOR-SCHEME\s*=" "${hydeThemeDir}/hypr.theme" && grep "^[[:space:]]*\$COLOR-SCHEME\s*=" "${hydeThemeDir}/hypr.theme" | cut -d '=' -f2 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' ;} ||
                     grep 'gsettings set org.gnome.desktop.interface color-scheme' "${hydeThemeDir}/hypr.theme" | awk -F "'" '{print $((NF - 1))}')"
-    colorScheme=${colorScheme:-$(gsettings get org.gnome.desktop.interface color-scheme)} 
+    colorScheme=${colorScheme:-$(gsettings get org.gnome.desktop.interface color-scheme)}
     # should be declared explicitly so we can easily debug
     grep -q "dark" <<< "${colorScheme}" && enableWallDcol=2
-    grep -q "light" <<< "${colorScheme}" && enableWallDcol=3 
+    grep -q "light" <<< "${colorScheme}" && enableWallDcol=3
 fi
 
 find "${wallbashDir}/Wall-Ways" -type f -name "*.dcol" | parallel fn_wallbash {}
