@@ -165,8 +165,10 @@ alias ythelp='ytmax_help'
 # Theme and Appearance
 #############################################################
 
-# Initialize Oh My Posh
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+# Initialize Starship
+export STARSHIP_CONFIG=~/.config/starship.toml
+export STARSHIP_CACHE=~/.cache/starship
+eval "$(starship init zsh)"
 
 # System Information Display
 turbofetch
