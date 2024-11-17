@@ -90,7 +90,7 @@ case ${waybar_cava_stbmode:-} in
     ;; # Lowest bar
 *)
     asciiBar="${waybar_cava_stbmode:-${bar}}"
-    ;; 
+    ;;
 esac
 
 # Calculate the length of the bar outside the loop
@@ -127,5 +127,4 @@ data_format = ascii
 ascii_max_range = ${bar_range}
 EOF
 
-cava -p "$config_file" | sed -u "${dict}" &
-disown
+cava -p "$config_file" | sed -u "${dict}"
