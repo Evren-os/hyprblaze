@@ -1,28 +1,53 @@
-# --------------------------------------------------- // Pacman Packages
-aria2
+# =========================
+#        Communication
+# =========================
 telegram-desktop
-proxychains-ng
-github-cli
-cmatrix
-
-
-# --------------------------------------------------- // AUR Packages
-spotify
 signal-desktop
-# edex-ui-bin
-# upscayl-bin
-ttf-maple
+legcord-bin
+
+# =========================
+#         Browsers
+# =========================
+brave-bin
+
+# =========================
+#        Productivity
+# =========================
+vscodium-git
 affine-bin
+
+# =========================
+#    Media & Entertainment
+# =========================
+spotify
+# spotube-bin
 qmplay2-git
 nomacs-qt6-git
-brave-bin
-# spotube-bin
-# filen-desktop-git
-# vscodium
-ttf-ms-win11-auto
+
+# =========================
+#         Utilities
+# =========================
+aria2
+proxychains-ng
+github-cli
 freedownloadmanager
-# nemo
-# nemo-fileroller
-# nemo-preview
-legcord-bin
+filen-desktop-git
+wezterm-git
+upscayl-bin
 # nekoray-bin
+
+# =========================
+#          Fonts
+# =========================
+ttf-maple
+ttf-ms-win11-auto
+
+# =========================
+# Terminal Fun & Aesthetics
+# =========================
+cmatrix
+neo-matrix-git
+cbonsai-git
+pipes.sh
+asciiquarium
+edex-ui-bin

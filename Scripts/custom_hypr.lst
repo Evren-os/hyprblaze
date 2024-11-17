@@ -1,100 +1,129 @@
-# --------------------------------------------------- // System Utilities
-pipewire                                               # Audio/Video server
-pipewire-alsa                                          # Pipewire ALSA client
-pipewire-audio                                         # Pipewire audio client
-pipewire-jack                                          # Pipewire JACK client
-pipewire-pulse                                         # Pipewire PulseAudio client
-gst-plugin-pipewire                                    # GStreamer Pipewire plugin
-wireplumber                                            # Pipewire session manager
-pavucontrol                                            # PulseAudio volume control
-pamixer                                                # PulseAudio CLI mixer
-networkmanager                                         # Network manager
-network-manager-applet                                 # Network manager system tray
-bluez                                                  # Bluetooth protocol stack
-bluez-utils                                            # Bluetooth CLI utilities
-blueman                                                # Bluetooth manager GUI
-brightnessctl                                          # Screen brightness control
-udiskie                                                # Manage removable media
-xdg-user-dirs                                         # User directories management
-nodejs                                                # Node.js runtime
-npm                                                    # Node package manager
-fzf                                                    # Command-line fuzzy finder
-tree                                                   # Directory tree viewer
-ttf-jetbrains-mono-nerd                               # JetBrains Mono font
-wlsunset                                              # Night color temperature adjustment
-yt-dlp
-zip
-unzip
-unrar                                     # Archive utilities
-flatpak                                                # Application containerization
-ttf-twemoji                                           # Twemoji font for emojis
-vulkan-radeon                                         # Vulkan graphics API for AMD
-btop                                                   # Resource monitor
+#═══════════════════════════════════════════════════════════════════════════
+#                        CORE SYSTEM COMPONENTS
+#═══════════════════════════════════════════════════════════════════════════
 
-# --------------------------------------------------- // Display Manager
-sddm                                                   # KDE Plasma display manager
-qt5-quickcontrols                                      # SDDM theme UI elements
-qt5-quickcontrols2                                     # Additional SDDM theme UI elements
-qt5-graphicaleffects                                   # SDDM theme graphical effects
+#────────────────────────── Audio Configuration ──────────────────────────
+pipewire                     # Audio/Video Server
+pipewire-alsa                # ALSA Support
+pipewire-audio               # Audio Client
+pipewire-jack                # JACK Support
+pipewire-pulse               # PulseAudio Support
+gst-plugin-pipewire          # GStreamer Plugin
+wireplumber                  # Session Manager
+pavucontrol                  # Volume Control GUI
+pamixer                      # CLI Mixer
 
-# --------------------------------------------------- // Window Manager
-hyprland                                               # wlroots-based Wayland compositor
-dunst                                                  # Notification daemon
-rofi-wayland                                           # Application launcher
-waybar                                                 # System status bar
-swww                                                   # Wallpaper setter
-swaylock-effects-git                                   # Lock screen utility
-wlogout                                                # Logout menu
-grimblast-git                                          # Screenshot utility
-hyprpicker                                             # Color picker
-slurp                                                  # Region selection tool
-swappy                                                 # Screenshot editor
-cliphist                                               # Clipboard manager
-hyprlock                                               # Lock screen
+#──────────────────────── System Management ────────────────────────────
+networkmanager               # Network Management
+network-manager-applet       # Network Tray
+bluez                        # Bluetooth Stack
+bluez-utils                  # BT Utilities
+blueman                      # BT Manager
+brightnessctl                # Brightness Control
+udiskie                      # Removable Media
+xdg-user-dirs                # User Directories
+polkit-gnome                 # Authentication
 
-# --------------------------------------------------- // Dependencies
-polkit-gnome                                           # Authentication agent
-xdg-desktop-portal-hyprland                            # XDG desktop portal for Hyprland
-pacman-contrib                                         # Pacman utilities
-python-pyamdgpuinfo                                    # AMD GPU info utility
-parallel                                               # Parallel processing tool
-jq                                                     # JSON processor
-imagemagick                                            # Image manipulation tool
-qt5-imageformats                                       # Qt5 image format support
-ffmpegthumbs                                           # Video thumbnail support for Dolphin
-kde-cli-tools                                          # File type defaults for Dolphin
-libnotify                                              # Notification library
+#═══════════════════════════════════════════════════════════════════════════
+#                        HYPRLAND ENVIRONMENT
+#═══════════════════════════════════════════════════════════════════════════
 
-# --------------------------------------------------- // Theming
-nwg-look                                               # GTK configuration tool
-qt5ct                                                  # Qt5 configuration tool
-qt6ct                                                  # Qt6 configuration tool
-kvantum                                                # SVG-based theme engine for Qt
-kvantum-qt5                                            # Kvantum theme engine for Qt5
-qt5-wayland                                            # Wayland support for Qt5
-qt6-wayland                                            # Wayland support for Qt6
+#────────────────────── Display & Window Management ────────────────────
+hyprland                     # Wayland Compositor
+sddm                         # Display Manager
+qt5-quickcontrols            # SDDM Theme Components
+qt5-quickcontrols2           # SDDM UI Elements
+qt5-graphicaleffects         # SDDM Effects
+waybar                       # Status Bar
+dunst                        # Notifications
+rofi-wayland                 # App Launcher
 
-# --------------------------------------------------- // Applications
-kitty                                                  # Terminal emulator
-dolphin                                                # KDE file manager
-ark                                                    # KDE archive manager
-neovim                                                 # Terminal text editor
-visual-studio-code-bin                                 # IDE for development
-alacritty                                              # GPU-accelerated terminal
-qbittorrent                                           # BitTorrent client
-zen-browser-avx2-bin                                   # Zen browser with AVX2 support
-yazi                                                   # Notetaking application
-qalculate-gtk
+#──────────────────────── Desktop Experience ──────────────────────────
+swww                         # Wallpaper Manager ✨
+hyprlock                     # Lock Screen
+swaylock-effects-git         # Lock Effects
+wlogout                      # Logout Menu
+grimblast-git                # Screenshot Tool 📸
+hyprpicker                   # Color Picker 🎨
+slurp                        # Region Selection
+swappy                       # Screenshot Editor
+cliphist                     # Clipboard Manager
 
-# --------------------------------------------------- // Shell
-eza|zsh                                                # Enhanced file lister for Zsh
-oh-my-zsh-git|zsh                                      # Zsh plugin manager
-oh-my-posh-bin|zsh oh-my-zsh-git        # Powerlevel10k theme for Zsh
-lsd|fish                                               # Enhanced file lister for Fish
-starship|fish                                         # Customizable shell prompt for Fish
-fastfetch                                              # System information display
-# pokemon-colorscripts-git|zsh                         # Pokémon sprite display (commented out)
-pokeget                                                # pokemon-colorscripts-git replacement
+#═══════════════════════════════════════════════════════════════════════════
+#                           APPLICATIONS
+#═══════════════════════════════════════════════════════════════════════════
 
-# --------------------------------------------------- // HyDE
-hyde-cli-git                                           # CLI tool for managing HyDE
+#───────────────────────── Terminal & Shell ─────────────────────────────
+kitty                        # Primary Terminal
+alacritty                    # GPU Terminal
+zsh                          # Shell
+oh-my-zsh-git                # ZSH Framework
+starship                     # Shell Prompt ⭐
+fastfetch                    # System Info
+pokeget                      # Pokemon Art 🎮
+#pokemon-colorscripts-git    # [Replaced]
+
+#────────────────────── Development & Editing ────────────────────────
+# visual-studio-code-bin     # IDE
+neovim                       # Text Editor
+nodejs                       # Runtime
+npm                          # Package Manager
+
+#──────────────────────── File Management ──────────────────────────────
+dolphin                      # File Manager GUI
+yazi                         # Terminal FM
+ark                          # Archive Manager
+zip                          # Compression
+unzip                        # Decompression
+unrar                        # RAR Support
+
+#──────────────────────── Internet & Media ──────────────────────────
+zen-browser-avx2-bin         # Web Browser 🌐
+qbittorrent                  # Torrent Client
+yt-dlp                       # Media Downloader
+
+#═══════════════════════════════════════════════════════════════════════════
+#                        THEMING & VISUALS
+#═══════════════════════════════════════════════════════════════════════════
+
+#────────────────────────── Fonts & Icons ────────────────────────────
+ttf-jetbrains-mono-nerd      # Dev Font
+ttf-twemoji                  # Emoji Font
+
+#─────────────────────── Theme Configuration ─────────────────────────
+nwg-look                     # GTK Settings
+qt5ct                        # Qt5 Settings
+qt6ct                        # Qt6 Settings
+kvantum                      # Qt Theme Engine
+kvantum-qt5                  # Qt5 Theme
+qt5-wayland                  # Qt5 Wayland
+qt6-wayland                  # Qt6 Wayland
+qt5-imageformats             # Image Support
+
+#═══════════════════════════════════════════════════════════════════════════
+#                      SYSTEM INTEGRATION
+#═══════════════════════════════════════════════════════════════════════════
+
+#───────────────────────── System Tools ─────────────────────────────
+btop                         # Resource Monitor
+fzf                          # Fuzzy Finder
+tree                         # Directory Viewer
+parallel                     # Process Utility
+jq                           # JSON Processor
+
+#──────────────────────── System Support ──────────────────────────────
+xdg-desktop-portal-hyprland  # XDG Portal
+pacman-contrib               # Pacman Tools
+python-pyamdgpuinfo          # AMD GPU Info
+imagemagick                  # Image Processing
+ffmpegthumbs                 # Video Thumbnails
+kde-cli-tools                # Dolphin Integration
+libnotify                    # Notifications
+vulkan-radeon                # AMD Graphics
+flatpak                      # App Containers
+wlsunset                     # Night Light
+
+#───────────────────────── Dotfiles Manager ─────────────────────────
+hyde-cli-git                 # Dotfiles CLI ⚙️
+
+#═══════════════════════════════════════════════════════════════════════════
