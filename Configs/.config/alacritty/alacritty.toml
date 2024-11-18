@@ -12,7 +12,7 @@ WINIT_X11_SCALE_FACTOR = "1.0"
 position = "None"
 dynamic_padding = true
 decorations = "full"
-opacity = 0.80
+opacity = 0.50
 blur = false
 startup_mode = "Windowed"
 dynamic_title = true
@@ -33,12 +33,6 @@ y = 12
 [scrolling]
 history = 10000
 multiplier = 3
-
-## BELL -----------------------------------------------------------
-[bell]
-animation = "Linear"
-duration = 20
-command = { program = "paplay", args = ["/usr/share/sounds/freedesktop/stereo/dialog-error.oga"] }
 
 ## SELECTION ------------------------------------------------------
 [selection]
