@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # sysfetch
-# Thanks to u/x_ero for his sysinfo script
-# Modified by gh0stzk https://github.com/gh0stzk/dotfiles
+# Thanks to gh0stzk for his sysinfo script
+# Modified by Evrenos https://github.com/Evren-os/hyprblaze
 
 # color escapes
 CBK=$(tput setaf 0)
