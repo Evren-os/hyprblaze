@@ -1,13 +1,13 @@
 [font]
-size = 10
+size = 11
   [font.normal]
-  family = "JetBrains Mono Nerd Font"
+  family = "Iosevka Nerd Font"
   style = "Regular"
   [font.bold]
-  family = "JetBrains Mono Nerd Font"
+  family = "Iosevka Nerd Font"
   style = "Bold"
   [font.italic]
-  family = "JetBrains Mono Nerd Font"
+  family = "Iosevka Nerd Font"
   style = "Italic"
   [font.offset]
   y = 0
