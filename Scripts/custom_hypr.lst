@@ -110,6 +110,7 @@ fzf                          # Fuzzy Finder
 tree                         # Directory Viewer
 parallel                     # Process Utility
 jq                           # JSON Processor
+rsync
 
 #──────────────────────── System Support ──────────────────────────────
 xdg-desktop-portal-hyprland  # XDG Portal
