@@ -3,7 +3,7 @@
 # =========================
 telegram-desktop
 signal-desktop
-legcord-bin
+legcord-git
 
 # =========================
 #         Browsers
@@ -14,6 +14,7 @@ brave-bin
 #        Productivity
 # =========================
 vscodium-git
+vscodium-marketplace
 affine-bin
 
 # =========================
@@ -31,8 +32,8 @@ aria2
 proxychains-ng
 github-cli
 freedownloadmanager
-filen-desktop-git
-wezterm-git
+# filen-desktop-git
+# wezterm-git
 upscayl-bin
 rose-pine-cursor
 # nekoray-bin
