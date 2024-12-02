@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> This repository contains my customized dotfiles for Arch Linux, modified from the original [Hyprdots repository](https://github.com/prasanthrangan/hyprdots.git) by [prasanthrangan](https://github.com/prasanthrangan). 
+> This repository contains my customized dotfiles for Arch Linux, modified from the original [Hyprdots repository](https://github.com/prasanthrangan/hyprdots.git) by [prasanthrangan](https://github.com/prasanthrangan).You’re better off sticking with the original repo for this setup... mine’s not the move
 
 > [!CAUTION]
 > **Please note:** These dotfiles are highly personalized for my setup and may not work as expected on your system. Use them at your own discretion.
