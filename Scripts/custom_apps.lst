@@ -3,7 +3,7 @@
 # =========================
 telegram-desktop
 signal-desktop
-legcord-git
+legcord-bin
 
 # =========================
 #         Browsers
@@ -13,7 +13,7 @@ brave-bin
 # =========================
 #        Productivity
 # =========================
-vscodium-git
+vscodium-bin
 vscodium-marketplace
 affine-bin
 
@@ -22,7 +22,7 @@ affine-bin
 # =========================
 spotify
 # spotube-bin
-qmplay2-git
+qmplay2
 nomacs-qt6-git
 
 # =========================
@@ -36,12 +36,10 @@ freedownloadmanager
 # wezterm-git
 upscayl-bin
 rose-pine-cursor
-# nekoray-bin
 
 # =========================
 #          Fonts
 # =========================
-ttf-maple
 ttf-ms-win11-auto
 
 # =========================
@@ -52,4 +50,4 @@ neo-matrix-git
 cbonsai-git
 pipes.sh
 asciiquarium
-edex-ui-bin
+pipes.sh

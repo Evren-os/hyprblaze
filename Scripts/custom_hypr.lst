@@ -89,6 +89,8 @@ yt-dlp                       # Media Downloader
 #────────────────────────── Fonts & Icons ────────────────────────────
 ttf-jetbrains-mono-nerd      # Dev Font
 ttf-twemoji                  # Emoji Font
+cozette-otb                  # Bitmap font optimized for coding
+nerd-fonts-cozette-ttf       # Bitmap font optimized for coding
 
 #─────────────────────── Theme Configuration ─────────────────────────
 nwg-look                     # GTK Settings
