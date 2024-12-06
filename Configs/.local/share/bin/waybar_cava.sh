@@ -90,7 +90,7 @@ case ${waybar_cava_stbmode:-} in
     ;; # Lowest bar
 *)
     asciiBar="${waybar_cava_stbmode:-${bar}}"
-    ;;
+    ;; 
 esac
 
 # Calculate the length of the bar outside the loop

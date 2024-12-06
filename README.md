@@ -1,11 +1,7 @@
-> [!IMPORTANT]
-> This repository contains my customized dotfiles for Arch Linux, modified from the original [Hyprdots repository](https://github.com/prasanthrangan/hyprdots.git) by [prasanthrangan](https://github.com/prasanthrangan).You’re better off sticking with the original repo for this setup... mine’s not the move
+> **CAUTION:** This repository contains my customized dotfiles for Arch Linux, based on the original [Hyprdots repository](https://github.com/prasanthrangan/hyprdots.git) by [prasanthrangan](https://github.com/prasanthrangan). These dotfiles are highly tailored to my workflow and preferences. They may require adjustments or dependencies to work on your system. For a error free and more universal setup, stick to the original repository.
 
-> [!CAUTION]
-> **Please note:** These dotfiles are highly personalized for my setup and may not work as expected on your system. Use them at your own discretion.
-> The configurations and scripts in this repository are specifically tailored for my workflow and preferences. They may require adjustments or additional dependencies if you choose to use them. I recommend reviewing the scripts and configuration files thoroughly before applying them to your system.
+###### _<div align="right"><sub>// design by t2</sub></div>_
 
-###### *<div align="right"><sub>// design by t2</sub></div>*
 <div align = center>
     <a href="https://discord.gg/AYbJ9MJez7">
 <img alt="Dynamic JSON Badge" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdiscordapp.com%2Fapi%2Finvites%2FmT5YqjaJFh%3Fwith_counts%3Dtrue&query=%24.approximate_member_count&suffix=%20members&style=for-the-badge&logo=discord&logoSize=auto&label=The%20HyDe%20Project&labelColor=ebbcba&color=c79bf0">
@@ -24,13 +20,13 @@
 
 <br>
 
-  <a href="#installation"><kbd> <br> Installation <br> </kbd></a>&ensp;&ensp;
-  <a href="#themes"><kbd> <br> Themes <br> </kbd></a>&ensp;&ensp;
-  <a href="#styles"><kbd> <br> Styles <br> </kbd></a>&ensp;&ensp;
-  <a href="#keybindings"><kbd> <br> Keybindings <br> </kbd></a>&ensp;&ensp;
-  <a href="https://www.youtube.com/watch?v=2rWqdKU1vu8&list=PLt8rU_ebLsc5yEHUVsAQTqokIBMtx3RFY&index=1"><kbd> <br> Youtube <br> </kbd></a>&ensp;&ensp;
-  <a href="https://github.com/prasanthrangan/hyprdots/wiki"><kbd> <br> Wiki <br> </kbd></a>&ensp;&ensp;
-  <a href="https://discord.gg/qWehcFJxPa"><kbd> <br> Discord <br> </kbd></a>
+<a href="#installation"><kbd> <br> Installation <br> </kbd></a>&ensp;&ensp;
+<a href="#themes"><kbd> <br> Themes <br> </kbd></a>&ensp;&ensp;
+<a href="#styles"><kbd> <br> Styles <br> </kbd></a>&ensp;&ensp;
+<a href="#keybindings"><kbd> <br> Keybindings <br> </kbd></a>&ensp;&ensp;
+<a href="https://www.youtube.com/watch?v=2rWqdKU1vu8&list=PLt8rU_ebLsc5yEHUVsAQTqokIBMtx3RFY&index=1"><kbd> <br> Youtube <br> </kbd></a>&ensp;&ensp;
+<a href="https://github.com/prasanthrangan/hyprdots/wiki"><kbd> <br> Wiki <br> </kbd></a>&ensp;&ensp;
+<a href="https://discord.gg/qWehcFJxPa"><kbd> <br> Discord <br> </kbd></a>
 
 </div><br><br>
 
@@ -40,6 +36,7 @@ https://github.com/prasanthrangan/hyprdots/assets/106020512/7f8fadc8-e293-4482-a
 
 <a id="installation"></a>  
 <img src="Source/assets/Installation.gif" width="200"/>
+
 ---
 
 The installation script is designed for a minimal [Arch Linux](https://wiki.archlinux.org/title/Arch_Linux) install, but **may** work on some [Arch-based distros](https://wiki.archlinux.org/title/Arch-based_distributions).
@@ -79,6 +76,7 @@ For more details, please refer to the [installation wiki](https://github.com/pra
 
 <a id="updating"></a>  
 <img src="Source/assets/Updating.gif" width="200"/>
+
 ---
 
 To update HyDE, you will need to pull the latest changes from GitHub and restore the configs by running the following commands:
@@ -103,10 +101,11 @@ For more details, you can refer to [Hyde-cli - dots management wiki](https://git
 
 <a id="themes"></a>  
 <img src="Source/assets/Themes.gif" width="200"/>
+
 ---
 
 All our official themes are stored in a separate repository, allowing users to install them using themepatcher.
-For more information, visit [HyDE-Project/hyde-themes](https://github.com/HyDE-Project/hyde-themes). 
+For more information, visit [HyDE-Project/hyde-themes](https://github.com/HyDE-Project/hyde-themes).
 
 <div align="center">
   <table><tr><td>
@@ -139,6 +138,7 @@ For more information, visit [HyDE-Project/hyde-themes](https://github.com/HyDE-P
 
 <a id="styles"></a>  
 <img src="Source/assets/Styles.gif" width="200"/>
+
 ---
 
 <div align="center"><table><tr>Theme Select</tr><tr><td>
@@ -187,65 +187,65 @@ For more information, visit [HyDE-Project/hyde-themes](https://github.com/HyDE-P
 
 <a id="keybindings"></a>  
 <img src="Source/assets/Keybindings.gif" width="200"/>
----
 
+---
 
 <div align="center">
 
-| Keys | Action |
-| :--- | :--- |
-| <kbd>Super</kbd> + <kbd>Q</kbd><br><kbd>Alt</kbd> + <kbd>F4</kbd> | Close focused window|
-| <kbd>Super</kbd> + <kbd>Del</kbd> | Kill Hyprland session |
-| <kbd>Super</kbd> + <kbd>W</kbd> | Toggle the window between focus and float |
-| <kbd>Super</kbd> + <kbd>G</kbd> | Toggle the window between focus and group |
-| <kbd>Super</kbd> + <kbd>slash</kbd> | Launch keybinds hint |
-| <kbd>Alt</kbd> + <kbd>Enter</kbd> | Toggle the window between focus and fullscreen |
-| <kbd>Super</kbd> + <kbd>L</kbd> | Launch lock screen |
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>F</kbd> | Toggle pin on focused window |
-| <kbd>Super</kbd> + <kbd>Backspace</kbd> | Launch logout menu |
-| <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>W</kbd> | Toggle waybar |
-| <kbd>Super</kbd> + <kbd>T</kbd> | Launch terminal emulator (kitty) |
-| <kbd>Super</kbd> + <kbd>E</kbd> | Launch file manager (dolphin) |
-| <kbd>Super</kbd> + <kbd>C</kbd> | Launch text editor (vscode) |
-| <kbd>Super</kbd> + <kbd>F</kbd> | Launch web browser (firefox) |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Esc</kbd> | Launch system monitor (htop/btop or fallback to top) |
-| <kbd>Super</kbd> + <kbd>A</kbd> | Launch application launcher (rofi) |
-| <kbd>Super</kbd> + <kbd>Tab</kbd> | Launch window switcher (rofi) |
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd> | Launch file explorer (rofi) |
-| <kbd>F10</kbd> | Toggle audio mute |
-| <kbd>F11</kbd> | Decrease volume |
-| <kbd>F12</kbd> | Increase volume |
-| <kbd>Super</kbd> + <kbd>P</kbd> | Partial screenshot capture |
-| <kbd>Super</kbd> + <kbd>Ctrl</kbd> + <kbd>P</kbd> | Partial screenshot capture (frozen screen) |
-| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>P</kbd> | Monitor screenshot capture |
-| <kbd>PrtScn</kbd> | All monitors screenshot capture |
-| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>G</kbd> | Disable hypr effects for gamemode |
-| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>→</kbd><kbd>←</kbd> | Cycle wallpaper |
-| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>↑</kbd><kbd>↓</kbd> | Cycle waybar mode |
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> | Launch wallbash mode select menu (rofi) |
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> | Launch theme select menu (rofi) |
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd> | Launch style select menu (rofi) |
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd> | Launch theme style select menu (rofi) |
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> | Launch wallpaper select menu (rofi) |
-| <kbd>Super</kbd> + <kbd>V</kbd> | Launch clipboard (rofi) |
-| <kbd>Super</kbd> + <kbd>K</kbd> | Switch keyboard layout |
-| <kbd>Super</kbd> + <kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd> | Move window focus |
-| <kbd>Alt</kbd> + <kbd>Tab</kbd> | Change window focus |
-| <kbd>Super</kbd> + <kbd>[0-9]</kbd> | Switch workspaces |
-| <kbd>Super</kbd> + <kbd>Ctrl</kbd> + <kbd>←</kbd><kbd>→</kbd> | Switch workspaces to a relative workspace |
-| <kbd>Super</kbd> + <kbd>Ctrl</kbd> + <kbd>↓</kbd> | Move to the first empty workspace |
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd> | Resize windows |
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>[0-9]</kbd> | Move focused window to a relative workspace |
+| Keys                                                                                                     | Action                                                            |
+| :------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------- |
+| <kbd>Super</kbd> + <kbd>Q</kbd><br><kbd>Alt</kbd> + <kbd>F4</kbd>                                        | Close focused window                                              |
+| <kbd>Super</kbd> + <kbd>Del</kbd>                                                                        | Kill Hyprland session                                             |
+| <kbd>Super</kbd> + <kbd>W</kbd>                                                                          | Toggle the window between focus and float                         |
+| <kbd>Super</kbd> + <kbd>G</kbd>                                                                          | Toggle the window between focus and group                         |
+| <kbd>Super</kbd> + <kbd>slash</kbd>                                                                      | Launch keybinds hint                                              |
+| <kbd>Alt</kbd> + <kbd>Enter</kbd>                                                                        | Toggle the window between focus and fullscreen                    |
+| <kbd>Super</kbd> + <kbd>L</kbd>                                                                          | Launch lock screen                                                |
+| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>F</kbd>                                                       | Toggle pin on focused window                                      |
+| <kbd>Super</kbd> + <kbd>Backspace</kbd>                                                                  | Launch logout menu                                                |
+| <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>W</kbd>                                                          | Toggle waybar                                                     |
+| <kbd>Super</kbd> + <kbd>T</kbd>                                                                          | Launch terminal emulator (kitty)                                  |
+| <kbd>Super</kbd> + <kbd>E</kbd>                                                                          | Launch file manager (dolphin)                                     |
+| <kbd>Super</kbd> + <kbd>C</kbd>                                                                          | Launch text editor (vscode)                                       |
+| <kbd>Super</kbd> + <kbd>F</kbd>                                                                          | Launch web browser (firefox)                                      |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Esc</kbd>                                                      | Launch system monitor (htop/btop or fallback to top)              |
+| <kbd>Super</kbd> + <kbd>A</kbd>                                                                          | Launch application launcher (rofi)                                |
+| <kbd>Super</kbd> + <kbd>Tab</kbd>                                                                        | Launch window switcher (rofi)                                     |
+| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd>                                                       | Launch file explorer (rofi)                                       |
+| <kbd>F10</kbd>                                                                                           | Toggle audio mute                                                 |
+| <kbd>F11</kbd>                                                                                           | Decrease volume                                                   |
+| <kbd>F12</kbd>                                                                                           | Increase volume                                                   |
+| <kbd>Super</kbd> + <kbd>P</kbd>                                                                          | Partial screenshot capture                                        |
+| <kbd>Super</kbd> + <kbd>Ctrl</kbd> + <kbd>P</kbd>                                                        | Partial screenshot capture (frozen screen)                        |
+| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>P</kbd>                                                         | Monitor screenshot capture                                        |
+| <kbd>PrtScn</kbd>                                                                                        | All monitors screenshot capture                                   |
+| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>G</kbd>                                                         | Disable hypr effects for gamemode                                 |
+| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>→</kbd><kbd>←</kbd>                                             | Cycle wallpaper                                                   |
+| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>↑</kbd><kbd>↓</kbd>                                             | Cycle waybar mode                                                 |
+| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>                                                       | Launch wallbash mode select menu (rofi)                           |
+| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd>                                                       | Launch theme select menu (rofi)                                   |
+| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd>                                                       | Launch style select menu (rofi)                                   |
+| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd>                                                       | Launch theme style select menu (rofi)                             |
+| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd>                                                       | Launch wallpaper select menu (rofi)                               |
+| <kbd>Super</kbd> + <kbd>V</kbd>                                                                          | Launch clipboard (rofi)                                           |
+| <kbd>Super</kbd> + <kbd>K</kbd>                                                                          | Switch keyboard layout                                            |
+| <kbd>Super</kbd> + <kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd>                                      | Move window focus                                                 |
+| <kbd>Alt</kbd> + <kbd>Tab</kbd>                                                                          | Change window focus                                               |
+| <kbd>Super</kbd> + <kbd>[0-9]</kbd>                                                                      | Switch workspaces                                                 |
+| <kbd>Super</kbd> + <kbd>Ctrl</kbd> + <kbd>←</kbd><kbd>→</kbd>                                            | Switch workspaces to a relative workspace                         |
+| <kbd>Super</kbd> + <kbd>Ctrl</kbd> + <kbd>↓</kbd>                                                        | Move to the first empty workspace                                 |
+| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd>                   | Resize windows                                                    |
+| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>[0-9]</kbd>                                                   | Move focused window to a relative workspace                       |
 | <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd> | Move focused window (tiled/floating) around the current workspace |
-| <kbd>Super</kbd> + <kbd>MouseScroll</kbd> | Scroll through existing workspaces |
-| <kbd>Super</kbd> + <kbd>LeftClick</kbd><br><kbd>Super</kbd> + <kbd>Z</kbd> | Move focused window |
-| <kbd>Super</kbd> + <kbd>RightClick</kbd><br><kbd>Super</kbd> + <kbd>X</kbd> | Resize focused window |
-| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd> | Move/Switch to special workspace (scratchpad) |
-| <kbd>Super</kbd> + <kbd>S</kbd> | Toggle to special workspace |
-| <kbd>Super</kbd> + <kbd>J</kbd> | Toggle focused window split |
-| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>[0-9]</kbd> | Move focused window to a workspace silently |
-| <kbd>Super</kbd> + <kbd>Ctrl</kbd> + <kbd>H</kbd> | Move between grouped windows backward |
-| <kbd>Super</kbd> + <kbd>Ctrl</kbd> + <kbd>L</kbd> | Move between grouped windows forward |
+| <kbd>Super</kbd> + <kbd>MouseScroll</kbd>                                                                | Scroll through existing workspaces                                |
+| <kbd>Super</kbd> + <kbd>LeftClick</kbd><br><kbd>Super</kbd> + <kbd>Z</kbd>                               | Move focused window                                               |
+| <kbd>Super</kbd> + <kbd>RightClick</kbd><br><kbd>Super</kbd> + <kbd>X</kbd>                              | Resize focused window                                             |
+| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd>                                                         | Move/Switch to special workspace (scratchpad)                     |
+| <kbd>Super</kbd> + <kbd>S</kbd>                                                                          | Toggle to special workspace                                       |
+| <kbd>Super</kbd> + <kbd>J</kbd>                                                                          | Toggle focused window split                                       |
+| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>[0-9]</kbd>                                                     | Move focused window to a workspace silently                       |
+| <kbd>Super</kbd> + <kbd>Ctrl</kbd> + <kbd>H</kbd>                                                        | Move between grouped windows backward                             |
+| <kbd>Super</kbd> + <kbd>Ctrl</kbd> + <kbd>L</kbd>                                                        | Move between grouped windows forward                              |
 
 </div>
 
@@ -253,4 +253,3 @@ For more information, visit [HyDE-Project/hyde-themes](https://github.com/HyDE-P
   <br>
   <a href="#-design-by-t2"><kbd> <br> 🡅 <br> </kbd></a>
 </div>
-

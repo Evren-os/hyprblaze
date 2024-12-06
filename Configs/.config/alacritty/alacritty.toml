@@ -1,17 +1,22 @@
 general.import = ["~/.config/alacritty/colors/colors.toml", "~/.config/alacritty/fonts.toml"]
 
+general.live_config_reload = true
+
 [env]
 TERM = "xterm-256color"
 
 [window]
-decorations = "none"
+dynamic_padding = true
+decorations = "full"
 opacity = 0.7
   [window.padding]
-  x = 24
-  y = 24
+  x = 15
+  y = 15
   [window.dimensions]
   columns = 80
-  lines = 35
+  lines = 30
+
+
 
 [scrolling]
 history = 1_000
