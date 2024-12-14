@@ -68,6 +68,7 @@ pokeget                      # Pokemon Art 🎮
 neovim                       # Text Editor
 nodejs                       # Runtime
 npm                          # Package Manager
+go
 
 #──────────────────────── File Management ──────────────────────────────
 dolphin                      # File Manager GUI
