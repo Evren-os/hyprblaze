@@ -33,3 +33,7 @@ Y|Y|${HOME}/.local/share|dolphin|dolphin
 Y|Y|${HOME}/.local/share/kxmlgui5|dolphin|dolphin
 Y|Y|${HOME}/.local/share/kio/servicemenus|hydewallpaper.desktop|dolphin
 N|Y|${HOME}/.config|libinput-gestures.conf|libinput-gestures
+Y|Y|${HOME}/.config|alacritty|alacritty
+Y|Y|${HOME}/.config|cava|cava
+Y|Y|${HOME}/.config|mpv|mpv
+Y|Y|${HOME}/.config|starship.toml|alacritty
