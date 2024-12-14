@@ -152,7 +152,7 @@ alias docker-start="sudo systemctl start docker"
 alias docker-stop="sudo systemctl stop docker"
 
 # System Updates
-alias upchk="paru -Qua && checkupdates"
+alias upchk="checkupdates ; paru -Qua"
 alias system-update="paru -Syu --noconfirm"
 
 # YouTube Downloads
@@ -171,14 +171,14 @@ export STARSHIP_CACHE=~/.cache/starship
 eval "$(starship init zsh)"
 
 # System Information Display
-turbofetch
+rustor
 
 #############################################################
 # Additional Tools Configuration
 #############################################################
 
 # start_time=$(date +%s%3N)  # Milliseconds precision
-# turbofetch
+# hyprfetch
 # end_time=$(date +%s%3N)
 # echo "Startup time with fetch tool: $((end_time - start_time)) ms" >> ~/fetch_startup_time.log
 
