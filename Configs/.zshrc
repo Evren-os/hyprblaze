@@ -171,7 +171,7 @@ export STARSHIP_CACHE=~/.cache/starship
 eval "$(starship init zsh)"
 
 # System Information Display
-rustor
+# rustor
 
 #############################################################
 # Additional Tools Configuration
