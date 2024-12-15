@@ -31,6 +31,47 @@ ensure_dir() {
     [[ -d "$1" ]] || mkdir -p "$1" || error "Failed to create directory: $1"
 }
 
+# Dependency Installation
+install_dependencies() {
+    info "Checking and installing dependencies..."
+
+    # Ensure system is up to date
+    sudo pacman -Syu --noconfirm || error "Failed to update system packages"
+
+    # Install Git if not present
+    if ! command -v git >/dev/null 2>&1; then
+        info "Installing Git..."
+        sudo pacman -S --noconfirm git || error "Failed to install Git"
+        success "Git installed successfully"
+    else
+        info "Git is already installed"
+    fi
+
+    # Install Rust and Cargo if not present
+    if ! command -v rustc >/dev/null 2>&1 || ! command -v cargo >/dev/null 2>&1; then
+        info "Installing Rust and Cargo..."
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y || error "Failed to install Rust"
+
+        # Source cargo environment
+        source "$HOME/.cargo/env"
+
+        success "Rust and Cargo installed successfully"
+    else
+        info "Rust and Cargo are already installed"
+    fi
+
+    # Additional system dependencies
+    local deps=("base-devel" "wget" "curl")
+    for dep in "${deps[@]}"; do
+        if ! pacman -Q "$dep" >/dev/null 2>&1; then
+            info "Installing $dep..."
+            sudo pacman -S --noconfirm "$dep" || error "Failed to install $dep"
+        fi
+    done
+
+    success "All dependencies are installed and up to date"
+}
+
 # Paths
 HYDE_CONFIG_DIR="$HOME/HyDE/Configs"
 HYDE_SCRIPTS_DIR="$HOME/HyDE/Scripts"
@@ -56,31 +97,56 @@ setup_zsh_config() {
     fi
 }
 
+setup_rustor() {
+    info "Building and installing Rustor..."
+
+    ensure_dir "$CLONE_DIR"
+    cd "$CLONE_DIR"
+
+    # Remove existing rustor directory if it exists
+    [[ -d "rustor" ]] && rm -rf rustor
+
+    # Ensure Rust environment is sourced
+    [[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+
+    # Clone and build Rustor
+    git clone https://github.com/Evren-os/rustor.git || error "Failed to clone Rustor repository"
+    cd rustor
+
+    # Build Rustor
+    cargo build --release || error "Failed to build Rustor"
+
+    # Move binary to system path
+    sudo mv ./target/release/rustor /usr/local/bin/ || error "Failed to install Rustor"
+
+    success "Rustor installed successfully to /usr/local/bin/rustor"
+}
+
 setup_grub_theme() {
     confirm "Would you like to set up the GRUB theme?" || return 0
 
-    local grub_themes_dir="$CLONE_DIR/grub2-themes"
-
+    info "Setting up GRUB theme..."
     ensure_dir "$CLONE_DIR"
+    cd "$CLONE_DIR"
 
-    if [[ ! -d "$grub_themes_dir" ]]; then
-        warning "GRUB themes directory does not exist. Skipping theme setup."
-        return 0
-    fi
+    # Remove existing grub2-themes directory if it exists
+    [[ -d "grub2-themes" ]] && rm -rf grub2-themes
 
-    cd "$grub_themes_dir" || error "Failed to access GRUB themes directory."
+    # Clone GRUB themes repository
+    git clone --depth 1 https://github.com/vinceliuice/grub2-themes.git || error "Failed to clone GRUB themes repository"
+    cd grub2-themes
 
+    # Optional: Edit GRUB configuration
     if confirm "Would you like to edit the GRUB configuration file?"; then
         if ! sudo nano /etc/default/grub; then
             warning "Failed to open GRUB configuration for editing."
         fi
     fi
 
-    if sudo ./install.sh -t whitesur -i whitesur; then
-        success "GRUB theme installed successfully."
-    else
-        error "Failed to install GRUB theme."
-    fi
+    # Install GRUB theme
+    sudo ./install.sh -t whitesur -i whitesur || error "Failed to install GRUB theme"
+
+    success "GRUB theme installed successfully."
 }
 
 setup_sysfetch() {
@@ -108,13 +174,33 @@ main() {
     info "Created by Evrenos"
     echo
 
+    # Verify running on Arch Linux
+    if [[ ! -f /etc/arch-release ]]; then
+        error "This script is designed for Arch Linux only!"
+    fi
+
+    # Check for sudo/root privileges
+    if [[ "$EUID" -eq 0 ]]; then
+        error "Do not run this script as root. Use sudo if needed."
+    fi
+
     ensure_dir "$CLONE_DIR"
 
+    # Install dependencies first
+    install_dependencies
+
+    # Run setup functions
     setup_zsh_config
+    setup_rustor
     setup_grub_theme
     setup_sysfetch
 
     success "All setup tasks completed successfully!"
+
+    # Prompt for system reboot
+    if confirm "Would you like to reboot now?"; then
+        sudo reboot
+    fi
 }
 
 # Run main function
