@@ -79,7 +79,7 @@ unzip                        # Decompression
 unrar                        # RAR Support
 
 #──────────────────────── Internet & Media ──────────────────────────
-zen-browser-avx2-bin         # Web Browser 🌐
+zen-browser-bin         # Web Browser 🌐
 qbittorrent                  # Torrent Client
 yt-dlp                       # Media Downloader
 

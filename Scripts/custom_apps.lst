@@ -8,7 +8,7 @@ legcord-bin
 # =========================
 #         Browsers
 # =========================
-brave-bin
+brave-beta-bin
 
 # =========================
 #        Productivity
@@ -23,7 +23,7 @@ affine-bin
 spotify
 # spotube-bin
 qmplay2
-nomacs-qt6-git
+nomacs
 
 # =========================
 #         Utilities
