@@ -29,7 +29,7 @@ polkit-gnome                 # Authentication
 #═══════════════════════════════════════════════════════════════════════════
 
 #────────────────────── Display & Window Management ────────────────────
-hyprland                     # Wayland Compositor
+hyprland-git                     # Wayland Compositor
 sddm                         # Display Manager
 qt5-quickcontrols            # SDDM Theme Components
 qt5-quickcontrols2           # SDDM UI Elements
@@ -40,11 +40,11 @@ rofi-wayland                 # App Launcher
 
 #──────────────────────── Desktop Experience ──────────────────────────
 swww                         # Wallpaper Manager ✨
-hyprlock                     # Lock Screen
+hyprlock-git                 # Lock Screen
 swaylock-effects-git         # Lock Effects
 wlogout                      # Logout Menu
 grimblast-git                # Screenshot Tool 📸
-hyprpicker                   # Color Picker 🎨
+hyprpicker-git               # Color Picker 🎨
 slurp                        # Region Selection
 swappy                       # Screenshot Editor
 cliphist                     # Clipboard Manager
@@ -60,11 +60,8 @@ zsh                          # Shell
 oh-my-zsh-git                # ZSH Framework
 starship                     # Shell Prompt ⭐
 fastfetch                    # System Info
-pokeget                      # Pokemon Art 🎮
-#pokemon-colorscripts-git    # [Replaced]
 
 #────────────────────── Development & Editing ────────────────────────
-# visual-studio-code-bin     # IDE
 neovim                       # Text Editor
 nodejs                       # Runtime
 npm                          # Package Manager
@@ -79,7 +76,7 @@ unzip                        # Decompression
 unrar                        # RAR Support
 
 #──────────────────────── Internet & Media ──────────────────────────
-zen-browser-bin         # Web Browser 🌐
+zen-browser-bin              # Web Browser 🌐
 qbittorrent                  # Torrent Client
 yt-dlp                       # Media Downloader
 

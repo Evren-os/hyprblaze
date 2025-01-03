@@ -29,25 +29,23 @@ nomacs
 #         Utilities
 # =========================
 aria2
-proxychains-ng
+proxychains-ng-git
 github-cli
 freedownloadmanager
-# filen-desktop-git
-# wezterm-git
+filen-desktop-bin
 upscayl-bin
 rose-pine-cursor
 
 # =========================
 #          Fonts
 # =========================
-ttf-ms-win11-auto
+ttf-segoe-ui-variable
 
 # =========================
 # Terminal Fun & Aesthetics
 # =========================
-cmatrix
 neo-matrix-git
 cbonsai-git
 pipes.sh
 asciiquarium
-pipes.sh
+tenki
