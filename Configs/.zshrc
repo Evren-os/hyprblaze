@@ -1,16 +1,22 @@
 #############################################################
 # Core ZSH Configuration
 #############################################################
-
-# Oh My Zsh Installation Path
 export ZSH="/usr/share/oh-my-zsh"
-
-# Initialize Oh My Zsh
 source $ZSH/oh-my-zsh.sh
 
 # Path Configuration
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:/home/evrenos/.spicetify"
+
+# Bun Configuration
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+
+# Starship Configuration
+export STARSHIP_CONFIG="$HOME/.config/starship.toml"
+export STARSHIP_CACHE="$HOME/.cache/starship"
+eval "$(starship init zsh)"
 
 #############################################################
 # Zinit Plugin Manager Setup
@@ -31,158 +37,120 @@ zinit light chrissicool/zsh-256color
 zinit light Aloxaf/fzf-tab
 
 #############################################################
-# Package Management Functions
+# Package Management
 #############################################################
-
 # Detect AUR Helper
-if pacman -Qi yay &>/dev/null; then
-    aurhelper="yay"
-elif pacman -Qi paru &>/dev/null; then
+if (( $+commands[paru] )); then
     aurhelper="paru"
+elif (( $+commands[yay] )); then
+    aurhelper="yay"
 fi
 
-# Smart Package Installation
-in() {
-    local -a arch=() aur=()
-    for pkg in "$@"; do
-        if pacman -Si "${pkg}" &>/dev/null; then
-            arch+=("${pkg}")
+# Check Updates
+function check_updates() {
+    local official_updates=$(paru -Quq --repo | wc -l)
+    local aur_updates=$(paru -Quq --aur | wc -l)
+
+    if [[ $official_updates -eq 0 && $aur_updates -eq 0 ]]; then
+        print -P "%F{blue}AUR n Official? Dead AF, no updates, bruh.%f"
+    else
+        if [[ $official_updates -gt 0 ]]; then
+            print -P "%F{green}Official Updates:%f $official_updates available"
+            paru -Qu --repo
         else
-            aur+=("${pkg}")
+            print -P "%F{blue}Official updates? Nada, dipped out.%f"
         fi
-    done
-    [[ ${#arch[@]} -gt 0 ]] && sudo pacman -S "${arch[@]}"
-    [[ ${#aur[@]} -gt 0 ]] && ${aurhelper} -S "${aur[@]}"
+
+        if [[ $aur_updates -gt 0 ]]; then
+            print -P "%F{yellow}AUR Updates:%f $aur_updates available"
+            paru -Qu --aur
+        else
+            print -P "%F{blue}AUR's a ghost, no update juice here.%f"
+        fi
+    fi
 }
 
 #############################################################
 # YouTube Download Functions
 #############################################################
+YT_OPTS=(
+    --format-sort "res,fps,vcodec:av01,vcodec:vp9.2,vcodec:vp9,acodec:opus"
+    --prefer-free-formats
+    --format-sort-force
+    --merge-output-format "mkv"
+    --concurrent-fragments 3
+    --no-mtime
+    --output "%(title)s [%(id)s][%(height)sp][%(fps)sfps][%(vcodec)s][%(acodec)s].%(ext)s"
+)
 
-# Get Video Formats
-get_video_formats() {
-    local url=$1
-    yt-dlp -F $url
-}
-
-# Enhanced YouTube Download Function
-ytmax() {
+function ytmax() {
     local quality=${1:-"max"}
     local url=$2
 
-    # Handle URL-only input
     if [[ -z "$url" && "$quality" =~ ^https?:// ]]; then
         url=$quality
         quality="max"
     fi
 
-    # Base Parameters
-    local base_params=(
-        "--format-sort" "filesize,res,vcodec:prores,vcodec:av01,vcodec:vp9.2,vcodec:vp9,acodec:flac,acodec:alac,acodec:wav,asr:max,abr:max,vbr:max,tbr:max"
-        "--prefer-free-formats"
-        "--format-sort-force"
-        "--merge-output-format" "mkv"
-        "--no-mtime"
-    )
-
-    local output_template="%(title)s [%(id)s][%(height)sp][vcodec-%(vcodec)s][acodec-%(acodec)s].%(ext)s"
-
-    # Quality Presets
     local format_string
     case $quality in
-        4k)    format_string="bv*[height<=2160][vcodec=prores]/bv*[height<=2160][vcodec=av01]+ba[acodec=flac]/bv*[height<=2160][vcodec=vp9.2]+ba[acodec=flac]/bv*[height<=2160]+ba/b[height<=2160]" ;;
-        2k)    format_string="bv*[height<=1440][vcodec=prores]/bv*[height<=1440][vcodec=av01]+ba[acodec=flac]/bv*[height<=1440][vcodec=vp9.2]+ba[acodec=flac]/bv*[height<=1440]+ba/b[height<=1440]" ;;
-        1080)  format_string="bv*[height<=1080][vcodec=prores]/bv*[height<=1080][vcodec=av01]+ba[acodec=flac]/bv*[height<=1080][vcodec=vp9.2]+ba[acodec=flac]/bv*[height<=1080]+ba/b[height<=1080]" ;;
-        web)   format_string="bv*[vcodec=prores]/bv*[vcodec=av01]+ba[acodec=flac]/bv*[vcodec=vp9.2]+ba[acodec=flac]/bv*+ba/b/best" ;;
-        *)     format_string="bv*[vcodec=prores]/bv*[vcodec=av01]+ba[acodec=flac]/bv*[vcodec=vp9.2]+ba[acodec=flac]/bv*+ba/b/best" ;;
+        4k)    format_string="bv*[height<=2160][vcodec^=av01]+ba[acodec=opus]/bv*[height<=2160][vcodec^=vp9]+ba/bv*[height<=2160]+ba" ;;
+        2k)    format_string="bv*[height<=1440][vcodec^=av01]+ba[acodec=opus]/bv*[height<=1440][vcodec^=vp9]+ba/bv*[height<=1440]+ba" ;;
+        1080)  format_string="bv*[height<=1080][vcodec^=av01]+ba[acodec=opus]/bv*[height<=1080][vcodec^=vp9]+ba/bv*[height<=1080]+ba" ;;
+        *)     format_string="bv*[vcodec^=av01]+ba[acodec=opus]/bv*[vcodec^=vp9]+ba/bv*+ba/b" ;;
     esac
 
-    local -a command=(
-        "yt-dlp"
-        "--format" "$format_string"
-        "--output" "$output_template"
-        "--no-write-description"
-        "--no-write-info-json"
-        "--no-write-annotations"
-        "--no-embed-subs"
-        "--no-embed-metadata"
-    )
-    command+=("$base_params[@]" "$url")
-
-    echo "Downloading with absolute maximum quality settings..."
-    "${command[@]}"
+    yt-dlp ${YT_OPTS[@]} --format "$format_string" "$url"
 }
 
-# YouTube Help Function
-ytmax_help() {
-    echo "
-YtMax Download Helper - Absolute Maximum Quality, No Extra Files
-=================================================================
+function yt-batch() {
+    print -P "%F{blue}Enter video URLs (separated by commas). Press [ENTER] when done:%f"
+    read -r urls
 
-Commands:
-- ytmax [url]            : Download maximum quality (ProRes/AV1 + FLAC)
-- ytmax 4k [url]         : Download at 4K quality
-- ytmax 2k [url]         : Download at 2K quality
-- ytmax 1080 [url]       : Download at 1080p quality
-- ytmax web [url]        : Download from non-YouTube sites
-- ytf [url]              : Show available formats
-- update-ytdlp           : Update yt-dlp
+    local failed_urls=()
+    local IFS=','
 
-Examples:
-ytmax https://youtube.com/watch?v=...
-ytmax 4k https://youtube.com/watch?v=...
-ytmax web https://vimeo.com/...
-"
+    for url in ${=urls}; do
+        url=${url## }  # Remove leading spaces
+        url=${url%% }  # Remove trailing spaces
+
+        print -P "\n%F{yellow}Downloading: $url%f"
+        if ! ytmax "$url"; then
+            failed_urls+=("$url")
+            print -P "%F{red}Failed to download: $url%f"
+        fi
+    done
+
+    if (( ${#failed_urls[@]} > 0 )); then
+        print -P "\n%F{red}Failed URLs:%f"
+        printf '%s\n' "${failed_urls[@]}"
+    fi
 }
 
 #############################################################
 # Aliases
 #############################################################
-
-# Navigation
+# Navigation & Basic
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ls='ls --color'
-alias c='clear'
+alias ls='ls --color=auto'
 alias mkdir='mkdir -p'
+alias c='clear'
+
+# System Management
+alias docker-start='sudo systemctl start docker'
+alias docker-stop='sudo systemctl stop docker'
+alias upchk='check_updates'
 
 # Applications
 alias code='codium'
-alias docker-start="sudo systemctl start docker"
-alias docker-stop="sudo systemctl stop docker"
 
-# System Updates
-alias upchk="checkupdates ; paru -Qua"
-alias system-update="paru -Syu --noconfirm"
-
-# YouTube Downloads
+# Media Download
 alias yt='ytmax'
-alias ytf='get_video_formats'
-alias update-ytdlp='yt-dlp -U'
-alias ythelp='ytmax_help'
+alias ytf='yt-dlp -F'
+alias ytb='yt-batch'
 
 #############################################################
 # Theme and Appearance
 #############################################################
-
-# Initialize Starship
-export STARSHIP_CONFIG=~/.config/starship.toml
-export STARSHIP_CACHE=~/.cache/starship
-eval "$(starship init zsh)"
-
-# System Information Display
-# rustor
-
-#############################################################
-# Additional Tools Configuration
-#############################################################
-
-# start_time=$(date +%s%3N)  # Milliseconds precision
-# hyprfetch
-# end_time=$(date +%s%3N)
-# echo "Startup time with fetch tool: $((end_time - start_time)) ms" >> ~/fetch_startup_time.log
-
-# Bun Configuration
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-[ -s "/home/evrenos/.bun/_bun" ] && source "/home/evrenos/.bun/_bun"
+rustor
