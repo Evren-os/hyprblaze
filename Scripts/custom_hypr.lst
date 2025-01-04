@@ -1,8 +1,8 @@
-#═══════════════════════════════════════════════════════════════════════════
-#                        CORE SYSTEM COMPONENTS
-#═══════════════════════════════════════════════════════════════════════════
+#==========================================================================
+#                           CORE SYSTEM COMPONENTS
+#==========================================================================
 
-#────────────────────────── Audio Configuration ──────────────────────────
+# Audio Configuration
 pipewire                     # Audio/Video Server
 pipewire-alsa                # ALSA Support
 pipewire-audio               # Audio Client
@@ -13,118 +13,118 @@ wireplumber                  # Session Manager
 pavucontrol                  # Volume Control GUI
 pamixer                      # CLI Mixer
 
-#──────────────────────── System Management ────────────────────────────
+# System Management
 networkmanager               # Network Management
 network-manager-applet       # Network Tray
 bluez                        # Bluetooth Stack
-bluez-utils                  # BT Utilities
-blueman                      # BT Manager
+bluez-utils                  # Bluetooth Utilities
+blueman                      # Bluetooth Manager
 brightnessctl                # Brightness Control
-udiskie                      # Removable Media
+udiskie                      # Removable Media Manager
 xdg-user-dirs                # User Directories
-polkit-gnome                 # Authentication
+polkit-gnome                 # Authentication Agent
 
-#═══════════════════════════════════════════════════════════════════════════
-#                        HYPRLAND ENVIRONMENT
-#═══════════════════════════════════════════════════════════════════════════
+#==========================================================================
+#                           HYPRLAND ENVIRONMENT
+#==========================================================================
 
-#────────────────────── Display & Window Management ────────────────────
-hyprland-git                     # Wayland Compositor
+# Display & Window Management
+hyprland                     # Wayland Compositor
 sddm                         # Display Manager
 qt5-quickcontrols            # SDDM Theme Components
 qt5-quickcontrols2           # SDDM UI Elements
 qt5-graphicaleffects         # SDDM Effects
 waybar                       # Status Bar
 dunst                        # Notifications
-rofi-wayland                 # App Launcher
+rofi-wayland                 # Application Launcher
 
-#──────────────────────── Desktop Experience ──────────────────────────
-swww                         # Wallpaper Manager ✨
-hyprlock-git                 # Lock Screen
-swaylock-effects-git         # Lock Effects
+# Desktop Experience
+swww                         # Wallpaper Manager
+hyprlock                     # Lock Screen
+swaylock-effects-git         # Lock Screen Effects
 wlogout                      # Logout Menu
-grimblast-git                # Screenshot Tool 📸
-hyprpicker-git               # Color Picker 🎨
+grimblast-git                # Screenshot Tool
+hyprpicker                   # Color Picker
 slurp                        # Region Selection
 swappy                       # Screenshot Editor
 cliphist                     # Clipboard Manager
 
-#═══════════════════════════════════════════════════════════════════════════
-#                           APPLICATIONS
-#═══════════════════════════════════════════════════════════════════════════
+#==========================================================================
+#                              APPLICATIONS
+#==========================================================================
 
-#───────────────────────── Terminal & Shell ─────────────────────────────
+# Terminal & Shell
 kitty                        # Primary Terminal
-alacritty                    # GPU Terminal
+alacritty                    # GPU Accelerated Terminal
 zsh                          # Shell
 oh-my-zsh-git                # ZSH Framework
-starship                     # Shell Prompt ⭐
-fastfetch                    # System Info
+starship                     # Shell Prompt
+fastfetch                    # System Information Fetcher
 
-#────────────────────── Development & Editing ────────────────────────
+# Development & Editing
 neovim                       # Text Editor
-nodejs                       # Runtime
-npm                          # Package Manager
-go
+nodejs                       # JavaScript Runtime
+npm                          # Node.js Package Manager
+go                           # Programming Language
 
-#──────────────────────── File Management ──────────────────────────────
+# File Management
 dolphin                      # File Manager GUI
-yazi                         # Terminal FM
+yazi                         # Terminal File Manager
 ark                          # Archive Manager
-zip                          # Compression
-unzip                        # Decompression
+zip                          # Compression Tool
+unzip                        # Decompression Tool
 unrar                        # RAR Support
 
-#──────────────────────── Internet & Media ──────────────────────────
-zen-browser-bin              # Web Browser 🌐
+# Internet & Media
+zen-browser-bin              # Zen Browser (Beta)
+zen-twilight-bin             # Zen Browser (Nightly)
 qbittorrent                  # Torrent Client
 yt-dlp                       # Media Downloader
 
-#═══════════════════════════════════════════════════════════════════════════
-#                        THEMING & VISUALS
-#═══════════════════════════════════════════════════════════════════════════
+#==========================================================================
+#                            THEMING & VISUALS
+#==========================================================================
 
-#────────────────────────── Fonts & Icons ────────────────────────────
-ttf-jetbrains-mono-nerd      # Dev Font
+# Fonts & Icons
+ttf-jetbrains-mono-nerd      # Developer Font
 ttf-twemoji                  # Emoji Font
-cozette-otb                  # Bitmap font optimized for coding
-nerd-fonts-cozette-ttf       # Bitmap font optimized for coding
+cozette-otb                  # Bitmap Font (Optimized for Coding)
+nerd-fonts-cozette-ttf       # Nerd Bitmap Font
 
-#─────────────────────── Theme Configuration ─────────────────────────
-nwg-look                     # GTK Settings
-qt5ct                        # Qt5 Settings
-qt6ct                        # Qt6 Settings
+# Theme Configuration
+nwg-look                     # GTK Theme Manager
+qt5ct                        # Qt5 Theme Manager
+qt6ct                        # Qt6 Theme Manager
 kvantum                      # Qt Theme Engine
-kvantum-qt5                  # Qt5 Theme
-qt5-wayland                  # Qt5 Wayland
-qt6-wayland                  # Qt6 Wayland
-qt5-imageformats             # Image Support
+kvantum-qt5                  # Qt5 Theme Support
+qt5-wayland                  # Qt5 Wayland Support
+qt6-wayland                  # Qt6 Wayland Support
+qt5-imageformats             # Qt5 Image Format Support
+cava                         # Terminal Audio Visualizer
 
-#═══════════════════════════════════════════════════════════════════════════
-#                      SYSTEM INTEGRATION
-#═══════════════════════════════════════════════════════════════════════════
+#==========================================================================
+#                          SYSTEM INTEGRATION
+#==========================================================================
 
-#───────────────────────── System Tools ─────────────────────────────
+# System Tools
 btop                         # Resource Monitor
 fzf                          # Fuzzy Finder
 tree                         # Directory Viewer
-parallel                     # Process Utility
+parallel                     # Command-Line Utility
 jq                           # JSON Processor
-rsync
+rsync                        # File Sync Tool
 
-#──────────────────────── System Support ──────────────────────────────
-xdg-desktop-portal-hyprland  # XDG Portal
-pacman-contrib               # Pacman Tools
-python-pyamdgpuinfo          # AMD GPU Info
-imagemagick                  # Image Processing
-ffmpegthumbs                 # Video Thumbnails
+# System Support
+xdg-desktop-portal-hyprland  # XDG Desktop Portal for Hyprland
+pacman-contrib               # Pacman Utilities
+python-pyamdgpuinfo          # AMD GPU Information Tool
+imagemagick                  # Image Processing Tool
+ffmpegthumbs                 # Video Thumbnailer
 kde-cli-tools                # Dolphin Integration
-libnotify                    # Notifications
-vulkan-radeon                # AMD Graphics
-flatpak                      # App Containers
-wlsunset                     # Night Light
+libnotify                    # Notification Support
+vulkan-radeon                # AMD Vulkan Driver
+flatpak                      # Flatpak Support
+wlsunset                     # Night Light Support
 
-#───────────────────────── Dotfiles Manager ─────────────────────────
-hyde-cli-git                 # Dotfiles CLI ⚙️
-
-#═══════════════════════════════════════════════════════════════════════════
+# Dotfiles Manager
+hyde-cli-git                 # Dotfiles CLI

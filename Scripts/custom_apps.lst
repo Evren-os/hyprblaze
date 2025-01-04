@@ -1,51 +1,51 @@
-# =========================
-#        Communication
-# =========================
-telegram-desktop
-signal-desktop
-legcord-bin
+#==========================================================================
+#                           COMMUNICATION
+#==========================================================================
+telegram-desktop             # Telegram Client
+signal-desktop               # Signal Client
+legcord-bin                  # Lightweight Discord Client
 
-# =========================
-#         Browsers
-# =========================
-brave-beta-bin
+#==========================================================================
+#                              BROWSERS
+#==========================================================================
+brave-beta-bin               # Brave Browser (Beta)
 
-# =========================
-#        Productivity
-# =========================
-vscodium-bin
-vscodium-bin-marketplace
-affine-bin
+#==========================================================================
+#                           PRODUCTIVITY
+#==========================================================================
+vscodium-bin                 # Open-Source VSCode Alternative
+vscodium-bin-marketplace     # Marketplace for VSCodium
+affine-bin                   # Note-Taking & Whiteboarding Tool
 
-# =========================
-#    Media & Entertainment
-# =========================
-spotify
-# spotube-bin
-qmplay2
-nomacs
+#==========================================================================
+#                     MEDIA & ENTERTAINMENT
+#==========================================================================
+spotify                      # Music Streaming
+# spotube-bin                # Spotube Music Streaming Client
+qmplay2                      # Media Player
+nomacs                       # Image Viewer
 
-# =========================
-#         Utilities
-# =========================
-aria2
-proxychains-ng-git
-github-cli
-freedownloadmanager
-filen-desktop-bin
-upscayl-bin
-rose-pine-cursor
+#==========================================================================
+#                              UTILITIES
+#==========================================================================
+aria2                        # Download Manager
+proxychains-ng-git           # Proxy Utility
+github-cli                   # GitHub Command-Line Tool
+freedownloadmanager          # Download Manager
+filen-desktop-bin            # Encrypted Cloud Storage Client
+# upscayl-bin                # AI Image Upscaler
+rose-pine-cursor             # Rose Pine Cursor Theme
 
-# =========================
-#          Fonts
-# =========================
-ttf-segoe-ui-variable
+#==========================================================================
+#                                FONTS
+#==========================================================================
+ttf-segoe-ui-variable        # Segoe UI Variable Font
 
-# =========================
-# Terminal Fun & Aesthetics
-# =========================
-neo-matrix-git
-cbonsai-git
-pipes.sh
-asciiquarium
-tenki
+#==========================================================================
+#                 TERMINAL FUN & AESTHETICS
+#==========================================================================
+neo-matrix-git               # Matrix Rain Effect
+cbonsai-git                  # Bonsai Tree Generator
+pipes.sh                     # Animated Pipes
+# asciiquarium               # ASCII Art Aquarium
+tenki                        # Weather in Terminal
