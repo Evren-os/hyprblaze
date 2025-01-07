@@ -48,24 +48,53 @@ fi
 
 # Check Updates
 function check_updates() {
-    local official_updates=$(paru -Quq --repo | wc -l)
-    local aur_updates=$(paru -Quq --aur | wc -l)
+    # Ensure required commands are installed
+    if ! command -v checkupdates >/dev/null 2>&1; then
+        print -P "%F{red}checkupdates is MIA. Install 'pacman-contrib' or rot.%f"
+        return 1
+    fi
+    if ! command -v paru >/dev/null 2>&1; then
+        print -P "%F{red}No 'paru', no AUR. Fix yourself.%f"
+        return 1
+    fi
 
-    if [[ $official_updates -eq 0 && $aur_updates -eq 0 ]]; then
-        print -P "%F{blue}AUR n Official? Dead AF, no updates, bruh.%f"
+    # Check if database sync is necessary (older than 1 day)
+    local db_sync_needed=false
+    if [[ $(find /var/lib/pacman/sync/ -type f -mtime +1 2>/dev/null) ]]; then
+        db_sync_needed=true
+    fi
+
+    # Sync database only if outdated
+    if $db_sync_needed; then
+        sudo pacman -Sy --quiet --noconfirm >/dev/null 2>&1
+        if [[ $? -ne 0 ]]; then
+            print -P "%F{red}Sync failed. Internet’s dead or mirrors hate you.%f"
+            return 1
+        fi
+    fi
+
+    # Fetch updates
+    local official_updates=$(checkupdates 2>/dev/null)
+    local aur_updates=$(paru -Qua 2>/dev/null)
+
+    # Display results
+    if [[ -z "$official_updates" && -z "$aur_updates" ]]; then
+        print -P "%F{blue}No updates. Your system mocks entropy.%f"
     else
-        if [[ $official_updates -gt 0 ]]; then
-            print -P "%F{green}Official Updates:%f $official_updates available"
-            paru -Qu --repo
+        if [[ -n "$official_updates" ]]; then
+            local official_count=$(echo "$official_updates" | wc -l)
+            print -P "%F{green}$official_count official updates. The grind never stops.%f"
+            print "$official_updates"
         else
-            print -P "%F{blue}Official updates? Nada, dipped out.%f"
+            print -P "%F{blue}Official repos: barren.%f"
         fi
 
-        if [[ $aur_updates -gt 0 ]]; then
-            print -P "%F{yellow}AUR Updates:%f $aur_updates available"
-            paru -Qu --aur
+        if [[ -n "$aur_updates" ]]; then
+            local aur_count=$(echo "$aur_updates" | wc -l)
+            print -P "%F{yellow}$aur_count AUR updates. They’re watching.%f"
+            print "$aur_updates"
         else
-            print -P "%F{blue}AUR's a ghost, no update juice here.%f"
+            print -P "%F{blue}AUR sleeps. Silence is deadly.%f"
         fi
     fi
 }
