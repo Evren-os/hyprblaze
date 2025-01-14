@@ -1,63 +1,67 @@
 #!/usr/bin/env sh
 
-# Restores the shader after screenshot has been taken
+# Shader management with improved error handling
 restore_shader() {
-	if [ -n "$shader" ]; then
-		hyprshade on "$shader"
-	fi
+    if [ -n "$shader" ] && command -v hyprshade >/dev/null; then
+        hyprshade on "$shader"
+    fi
 }
 
-# Saves the current shader and turns it off
 save_shader() {
-	shader=$(hyprshade current)
-	hyprshade off
-	trap restore_shader EXIT
+    if command -v hyprshade >/dev/null; then
+        shader=$(hyprshade current)
+        hyprshade off
+        trap restore_shader EXIT INT TERM
+    fi
 }
 
-save_shader # Saving the current shader
-
-if [ -z "$XDG_PICTURES_DIR" ]; then
-	XDG_PICTURES_DIR="$HOME/Pictures"
-fi
-
+# Initialize paths and directories
+XDG_PICTURES_DIR="${XDG_PICTURES_DIR:-$HOME/Pictures}"
 scrDir=$(dirname "$(realpath "$0")")
-source $scrDir/globalcontrol.sh
-swpy_dir="${confDir}/swappy"
 save_dir="${2:-$XDG_PICTURES_DIR/Screenshots}"
-save_file=$(date +'%y%m%d_%Hh%Mm%Ss_screenshot.png')
-temp_screenshot="/tmp/screenshot.png"
+timestamp=$(date +'%Y-%m-%d_%H-%M-%S')
+save_file="screenshot_${timestamp}.png"
 
-mkdir -p $save_dir
-mkdir -p $swpy_dir
-echo -e "[Default]\nsave_dir=$save_dir\nsave_filename_format=$save_file" >$swpy_dir/config
+# Ensure save directory exists
+mkdir -p "$save_dir"
 
-function print_error
-{
-	cat <<"EOF"
-    ./screenshot.sh <action>
-    ...valid actions are...
-        p  : print all screens
-        s  : snip current screen
-        sf : snip current screen (frozen)
-        m  : print focused monitor
-EOF
+# Source global controls if exists
+[ -f "$scrDir/globalcontrol.sh" ] && source "$scrDir/globalcontrol.sh"
+
+# Save current shader state
+save_shader
+
+print_error() {
+    echo "Usage: $(basename "$0") <action>
+Actions:
+    p  : capture full screen
+    s  : select area/window
+    sf : select area/window (frozen)
+    m  : capture active monitor"
+    exit 1
 }
 
-case $1 in
-p) # print all outputs
-	grimblast copysave screen $temp_screenshot && restore_shader && swappy -f $temp_screenshot ;;
-s) # drag to manually snip an area / click on a window to print it
-	grimblast copysave area $temp_screenshot && restore_shader && swappy -f $temp_screenshot ;;
-sf) # frozen screen, drag to manually snip an area / click on a window to print it
-	grimblast --freeze copysave area $temp_screenshot && restore_shader && swappy -f $temp_screenshot ;;
-m) # print focused monitor
-	grimblast copysave output $temp_screenshot && restore_shader && swappy -f $temp_screenshot ;;
-*) # invalid option
-	print_error ;;
-esac
+take_screenshot() {
+    local mode=$1
+    local path="${save_dir}/${save_file}"
 
-rm "$temp_screenshot"
+    case $mode in
+        p)  flameshot full -p "$path" ;;
+        s|sf) flameshot gui -p "$path" ;;
+        m)  flameshot screen -p "$path" ;;
+        *)  print_error ;;
+    esac
 
-if [ -f "${save_dir}/${save_file}" ]; then
-	notify-send -a "t1" -i "${save_dir}/${save_file}" "saved in ${save_dir}"
-fi
+    # Check if screenshot was successful and notify
+    if [ -f "$path" ]; then
+        notify-send -a "Screenshot" -i "$path" "Screenshot saved" "Location: ${save_dir}"
+        echo "Screenshot saved to: $path"
+        return 0
+    else
+        notify-send -a "Screenshot" -u critical "Screenshot failed"
+        return 1
+    fi
+}
+
+# Execute screenshot command based on argument
+take_screenshot "$1"
