@@ -13,6 +13,7 @@ brave-beta-bin               # Brave Browser (Beta)
 #==========================================================================
 #                           PRODUCTIVITY
 #==========================================================================
+obsidian
 vscodium-bin                 # Open-Source VSCode Alternative
 vscodium-bin-marketplace     # Marketplace for VSCodium
 affine-bin                   # Note-Taking & Whiteboarding Tool
