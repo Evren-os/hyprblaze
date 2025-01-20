@@ -1,8 +1,3 @@
-#==========================================================================
-#                           CORE SYSTEM COMPONENTS
-#==========================================================================
-
-# Audio Configuration
 pipewire                     # Audio/Video Server
 pipewire-alsa                # ALSA Support
 pipewire-audio               # Audio Client
@@ -12,8 +7,6 @@ gst-plugin-pipewire          # GStreamer Plugin
 wireplumber                  # Session Manager
 pavucontrol                  # Volume Control GUI
 pamixer                      # CLI Mixer
-
-# System Management
 networkmanager               # Network Management
 network-manager-applet       # Network Tray
 bluez                        # Bluetooth Stack
@@ -23,12 +16,6 @@ brightnessctl                # Brightness Control
 udiskie                      # Removable Media Manager
 xdg-user-dirs                # User Directories
 polkit-gnome                 # Authentication Agent
-
-#==========================================================================
-#                           HYPRLAND ENVIRONMENT
-#==========================================================================
-
-# Display & Window Management
 hyprland                     # Wayland Compositor
 sddm                         # Display Manager
 qt5-quickcontrols            # SDDM Theme Components
@@ -37,61 +24,46 @@ qt5-graphicaleffects         # SDDM Effects
 waybar                       # Status Bar
 dunst                        # Notifications
 rofi-wayland                 # Application Launcher
-
-# Desktop Experience
 swww                         # Wallpaper Manager
 hyprlock                     # Lock Screen
-swaylock-effects-git         # Lock Screen Effects
+# swaylock-effects-git       # Lock Screen Effects
 wlogout                      # Logout Menu
 grimblast-git                # Screenshot Tool
+grim                         # Screenshot Tool
 hyprpicker                   # Color Picker
 slurp                        # Region Selection
+satty                        # Modern Screenshot Annotation
 flameshot-git                # Screenshot Editor
 cliphist                     # Clipboard Manager
-
-#==========================================================================
-#                              APPLICATIONS
-#==========================================================================
-
-# Terminal & Shell
 kitty                        # Primary Terminal
 alacritty                    # GPU Accelerated Terminal
 zsh                          # Shell
 oh-my-zsh-git                # ZSH Framework
 starship                     # Shell Prompt
 fastfetch                    # System Information Fetcher
-
-# Development & Editing
 neovim                       # Text Editor
 nodejs                       # JavaScript Runtime
 npm                          # Node.js Package Manager
 go                           # Programming Language
-
-# File Management
 dolphin                      # File Manager GUI
 yazi                         # Terminal File Manager
 ark                          # Archive Manager
 zip                          # Compression Tool
 unzip                        # Decompression Tool
 unrar                        # RAR Support
-
-# Internet & Media
 zen-browser-bin              # Zen Browser (Beta)
 zen-twilight-bin             # Zen Browser (Nightly)
 qbittorrent                  # Torrent Client
 yt-dlp                       # Media Downloader
-
-#==========================================================================
-#                            THEMING & VISUALS
-#==========================================================================
-
-# Fonts & Icons
 ttf-jetbrains-mono-nerd      # Developer Font
 ttf-twemoji                  # Emoji Font
-cozette-otb                  # Bitmap Font (Optimized for Coding)
+ttf-segoe-ui-variable        # Segoe UI Variable Font
+ttf-iosevka-nerd             # Iosevka Nerd Font
+otf-geist-mono-nerd          # font family for Vercel
+otf-geist                    # font family for Vercel
+otf-geist-mono               # font family for Vercel
+cozette-otb                  # Bitmap Font
 nerd-fonts-cozette-ttf       # Nerd Bitmap Font
-
-# Theme Configuration
 nwg-look                     # GTK Theme Manager
 qt5ct                        # Qt5 Theme Manager
 qt6ct                        # Qt6 Theme Manager
@@ -101,20 +73,12 @@ qt5-wayland                  # Qt5 Wayland Support
 qt6-wayland                  # Qt6 Wayland Support
 qt5-imageformats             # Qt5 Image Format Support
 cava                         # Terminal Audio Visualizer
-
-#==========================================================================
-#                          SYSTEM INTEGRATION
-#==========================================================================
-
-# System Tools
 btop                         # Resource Monitor
 fzf                          # Fuzzy Finder
 tree                         # Directory Viewer
 parallel                     # Command-Line Utility
 jq                           # JSON Processor
 rsync                        # File Sync Tool
-
-# System Support
 xdg-desktop-portal-hyprland  # XDG Desktop Portal for Hyprland
 pacman-contrib               # Pacman Utilities
 python-pyamdgpuinfo          # AMD GPU Information Tool
@@ -125,6 +89,5 @@ libnotify                    # Notification Support
 vulkan-radeon                # AMD Vulkan Driver
 flatpak                      # Flatpak Support
 wlsunset                     # Night Light Support
-
-# Dotfiles Manager
 hyde-cli-git                 # Dotfiles CLI
+hypridle                     # idle daemon

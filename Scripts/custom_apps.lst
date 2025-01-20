@@ -17,11 +17,6 @@ freedownloadmanager          # Download Manager
 filen-desktop-bin            # Encrypted Cloud Storage Client
 # upscayl-bin                # AI Image Upscaler
 phinger-cursors              # Phinger Cursor Theme
-ttf-segoe-ui-variable        # Segoe UI Variable Font
-ttf-iosevka-nerd             # Iosevka Nerd Font
-otf-geist-mono-nerd          # font family for Vercel
-otf-geist                    # font family for Vercel
-otf-geist-mono               # font family for Vercel
 neo-matrix-git               # Matrix Rain Effect
 cbonsai-git                  # Bonsai Tree Generator
 pipes.sh                     # Animated Pipes
