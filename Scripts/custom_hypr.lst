@@ -62,8 +62,9 @@ ttf-iosevka-nerd             # Iosevka Nerd Font
 otf-geist-mono-nerd          # font family for Vercel
 otf-geist                    # font family for Vercel
 otf-geist-mono               # font family for Vercel
-cozette-otb                  # Bitmap Font
-nerd-fonts-cozette-ttf       # Nerd Bitmap Font
+apple-fonts                  # fonts for Apple platforms
+# cozette-otb                  # Bitmap Font
+# nerd-fonts-cozette-ttf       # Nerd Bitmap Font
 nwg-look                     # GTK Theme Manager
 qt5ct                        # Qt5 Theme Manager
 qt6ct                        # Qt6 Theme Manager
