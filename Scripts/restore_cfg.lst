@@ -37,3 +37,4 @@ N|Y|${HOME}/.config|libinput-gestures.conf|libinput-gestures
 Y|Y|${HOME}/.config|alacritty|alacritty
 Y|Y|${HOME}/.config|cava|cava
 Y|Y|${HOME}/.config|starship.toml|alacritty
+Y|Y|${HOME}/.config|codium-flags.conf|vscodium-bin

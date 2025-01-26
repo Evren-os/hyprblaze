@@ -176,6 +176,7 @@ EOF
         "$HOME/.local/share/bin/themeswitch.sh" &> /dev/null
     fi
     cp -r ~/HyDE/Configs/.zshrc "$HOME/.zshrc"
+    cp -r ~/HyDE/Configs/.config/starship.toml "$HOME/.config/"
 fi
 
 #---------------------#
