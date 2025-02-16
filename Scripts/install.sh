@@ -175,8 +175,11 @@ EOF
     if printenv HYPRLAND_INSTANCE_SIGNATURE &> /dev/null; then
         "$HOME/.local/share/bin/themeswitch.sh" &> /dev/null
     fi
-    cp -r ~/HyDE/Configs/.zshrc "$HOME/.zshrc"
-    cp -r ~/HyDE/Configs/.config/starship.toml "$HOME/.config/"
+
+    cp -f "$HOME/HyDE/Configs/.zshrc" "$HOME/.zshrc" || { echo "Failed to copy .zshrc"; exit 1; }
+    cp -f "$HOME/HyDE/Configs/.config/starship.toml" "$HOME/.config/starship.toml" || { echo "Failed to copy starship.toml"; exit 1; }
+    cp -f "$HOME/HyDE/Configs/.config/codium-flags.conf" "$HOME/.config/codium-flags.conf" || { echo "Failed to copy codium-flags.conf"; exit 1; }
+
 fi
 
 #---------------------#
