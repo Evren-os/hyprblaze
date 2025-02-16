@@ -11,12 +11,12 @@ spotify                      # Music Streaming
 qmplay2                      # Media Player
 nomacs                       # Image Viewer
 aria2                        # Download Manager
-proxychains-ng-git           # Proxy Utility
+proxychains-ng               # Proxy Utility
 github-cli                   # GitHub Command-Line Tool
 freedownloadmanager          # Download Manager
 filen-desktop-bin            # Encrypted Cloud Storage Client
-# upscayl-bin                # AI Image Upscaler
-phinger-cursors              # Phinger Cursor Theme
+upscayl-bin                  # AI Image Upscaler
+# phinger-cursors            # Phinger Cursor Theme
 neo-matrix-git               # Matrix Rain Effect
 cbonsai-git                  # Bonsai Tree Generator
 pipes.sh                     # Animated Pipes

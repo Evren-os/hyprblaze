@@ -33,7 +33,7 @@ grim                         # Screenshot Tool
 hyprpicker                   # Color Picker
 slurp                        # Region Selection
 satty                        # Modern Screenshot Annotation
-flameshot-git                # Screenshot Editor
+# flameshot-git              # Screenshot Editor
 cliphist                     # Clipboard Manager
 kitty                        # Primary Terminal
 alacritty                    # GPU Accelerated Terminal
@@ -45,8 +45,10 @@ neovim                       # Text Editor
 nodejs                       # JavaScript Runtime
 npm                          # Node.js Package Manager
 go                           # Programming Language
+zed                          # IDE
+bun                          # JS Runtime 
 dolphin                      # File Manager GUI
-yazi                         # Terminal File Manager
+# yazi                       # Terminal File Manager
 ark                          # Archive Manager
 zip                          # Compression Tool
 unzip                        # Decompression Tool
@@ -63,8 +65,8 @@ otf-geist-mono-nerd          # font family for Vercel
 otf-geist                    # font family for Vercel
 otf-geist-mono               # font family for Vercel
 apple-fonts                  # fonts for Apple platforms
-# cozette-otb                  # Bitmap Font
-# nerd-fonts-cozette-ttf       # Nerd Bitmap Font
+# cozette-otb                # Bitmap Font
+# nerd-fonts-cozette-ttf     # Nerd Bitmap Font
 nwg-look                     # GTK Theme Manager
 qt5ct                        # Qt5 Theme Manager
 qt6ct                        # Qt6 Theme Manager
