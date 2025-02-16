@@ -1,207 +1,70 @@
 #!/bin/zsh
 
-# Exit on error
-set -e
+set -e  # Exit on error
 
-# Color definitions
-RED="\033[0;31m"
-GREEN="\033[0;32m"
-YELLOW="\033[0;33m"
-BLUE="\033[0;34m"
-NC="\033[0m" # No Color
+# Minimal logging
+log() { printf "\033[0;34m[•] %s\033[0m\n" "$1"; }
+success() { printf "\033[0;32m[✔] %s\033[0m\n" "$1"; }
+fail() { printf "\033[0;31m[✘] %s\033[0m\n" "$1"; exit 1; }
+confirm() { read -q "?${1} (y/N): "; echo; [[ "$REPLY" =~ ^[Yy]$ ]]; }
 
-# Utility functions
-print_color() {
-    printf "${1}${2}${NC}\n"
-}
-
-info() { print_color "$BLUE" "[INFO] $1"; }
-success() { print_color "$GREEN" "[SUCCESS] $1"; }
-warning() { print_color "$YELLOW" "[WARNING] $1"; }
-error() {
-    print_color "$RED" "[ERROR] $1"
-    exit 1
-}
-confirm() {
-    read -q "REPLY?${1} (y/N): "
-    echo
-    [[ "$REPLY" =~ ^[Yy]$ ]]
-}
-ensure_dir() {
-    [[ -d "$1" ]] || mkdir -p "$1" || error "Failed to create directory: $1"
-}
-
-# Dependency Installation
-install_dependencies() {
-    info "Checking and installing dependencies..."
-
-    # Ensure system is up to date
-    sudo pacman -Syu --noconfirm || error "Failed to update system packages"
-
-    # Install Git if not present
-    if ! command -v git >/dev/null 2>&1; then
-        info "Installing Git..."
-        sudo pacman -S --noconfirm git || error "Failed to install Git"
-        success "Git installed successfully"
-    else
-        info "Git is already installed"
-    fi
-
-    # Install Rust and Cargo if not present
-    if ! command -v rustc >/dev/null 2>&1 || ! command -v cargo >/dev/null 2>&1; then
-        info "Installing Rust and Cargo..."
-        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y || error "Failed to install Rust"
-
-        # Source cargo environment
-        source "$HOME/.cargo/env"
-
-        success "Rust and Cargo installed successfully"
-    else
-        info "Rust and Cargo are already installed"
-    fi
-
-    # Additional system dependencies
-    local deps=("base-devel" "wget" "curl")
-    for dep in "${deps[@]}"; do
-        if ! pacman -Q "$dep" >/dev/null 2>&1; then
-            info "Installing $dep..."
-            sudo pacman -S --noconfirm "$dep" || error "Failed to install $dep"
-        fi
-    done
-
-    success "All dependencies are installed and up to date"
-}
+# Ensure required commands exist
+check_cmd() { command -v "$1" >/dev/null 2>&1 || fail "$1 not installed. Install it manually."; }
 
 # Paths
-HYDE_CONFIG_DIR="$HOME/HyDE/Configs"
-HYDE_SCRIPTS_DIR="$HOME/HyDE/Scripts"
 CLONE_DIR="$HOME/Clone"
+mkdir -p "$CLONE_DIR"
 
-# Core functions
-setup_zsh_config() {
-    info "Setting up Zsh configuration..."
-
-    local zshrc_source="$HYDE_CONFIG_DIR/.zshrc"
-    if [[ ! -f "$zshrc_source" ]]; then
-        warning ".zshrc not found in $HYDE_CONFIG_DIR. Skipping Zsh configuration setup."
-        return 0
-    fi
-
-    cp -f "$zshrc_source" "$HOME/.zshrc" || error "Failed to copy .zshrc"
-
-    # Attempt to source the new .zshrc, but don't treat as a critical error
-    if source "$HOME/.zshrc"; then
-        success "Zsh configuration updated and sourced."
-    else
-        warning "Failed to source .zshrc. Please reload manually."
-    fi
-}
-
+# Rustor Setup
 setup_rustor() {
-    info "Building and installing Rustor..."
-
-    ensure_dir "$CLONE_DIR"
-    cd "$CLONE_DIR"
-
-    # Remove existing rustor directory if it exists
-    [[ -d "rustor" ]] && rm -rf rustor
-
-    # Ensure Rust environment is sourced
-    [[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
-
-    # Clone and build Rustor
-    git clone https://github.com/Evren-os/rustor.git || error "Failed to clone Rustor repository"
-    cd rustor
-
-    # Build Rustor
-    cargo build --release || error "Failed to build Rustor"
-
-    # Move binary to system path
-    sudo mv ./target/release/rustor /usr/local/bin/ || error "Failed to install Rustor"
-
-    success "Rustor installed successfully to /usr/local/bin/rustor"
+    log "Installing Rustor..."
+    check_cmd git; check_cmd cargo
+    cd "$CLONE_DIR" && rm -rf rustor
+    git clone https://github.com/Evren-os/rustor.git || fail "Rustor clone failed"
+    cd rustor && cargo build --release || fail "Rustor build failed"
+    sudo mv ./target/release/rustor /usr/local/bin/ || fail "Rustor install failed"
+    success "Rustor installed"
 }
 
+# GRUB Theme Setup
 setup_grub_theme() {
-    confirm "Would you like to set up the GRUB theme?" || return 0
-
-    info "Setting up GRUB theme..."
-    ensure_dir "$CLONE_DIR"
-    cd "$CLONE_DIR"
-
-    # Remove existing grub2-themes directory if it exists
-    [[ -d "grub2-themes" ]] && rm -rf grub2-themes
-
-    # Clone GRUB themes repository
-    git clone --depth 1 https://github.com/vinceliuice/grub2-themes.git || error "Failed to clone GRUB themes repository"
-    cd grub2-themes
-
-    # Optional: Edit GRUB configuration
-    if confirm "Would you like to edit the GRUB configuration file?"; then
-        if ! sudo nano /etc/default/grub; then
-            warning "Failed to open GRUB configuration for editing."
-        fi
-    fi
-
-    # Install GRUB theme
-    sudo ./install.sh -t whitesur -i whitesur || error "Failed to install GRUB theme"
-
-    success "GRUB theme installed successfully."
+    confirm "Setup GRUB theme?" || return
+    log "Installing GRUB theme..."
+    check_cmd git
+    cd "$CLONE_DIR" && rm -rf grub2-themes
+    git clone --depth 1 https://github.com/vinceliuice/grub2-themes.git || fail "GRUB clone failed"
+    cd grub2-themes && sudo ./install.sh -t whitesur -i whitesur || fail "GRUB theme install failed"
+    success "GRUB theme installed"
 }
 
+# Sysfetch Setup
 setup_sysfetch() {
-    info "Setting up sysfetch..."
-
-    local sysfetch_path="$HYDE_SCRIPTS_DIR/sysfetch"
-
-    if [[ ! -f "$sysfetch_path" ]]; then
-        warning "sysfetch script not found in $HYDE_SCRIPTS_DIR. Skipping sysfetch setup."
-        return 0
-    fi
-
-    chmod +x "$sysfetch_path" || error "Failed to make sysfetch executable."
-
-    if sudo ln -sf "$sysfetch_path" /usr/local/bin/sysfetch; then
-        success "sysfetch setup completed. You can now run 'sysfetch' from anywhere in the terminal."
-    else
-        error "Failed to create symbolic link for sysfetch."
-    fi
+    log "Setting up sysfetch..."
+    local sysfetch_path="$HOME/HyDE/Scripts/sysfetch"
+    [[ -f "$sysfetch_path" ]] || { log "sysfetch not found, skipping"; return; }
+    chmod +x "$sysfetch_path" || fail "sysfetch chmod failed"
+    sudo cp "$sysfetch_path" /usr/local/bin/sysfetch || fail "sysfetch install failed"
+    success "sysfetch installed"
 }
 
-# Main execution
+# SDDM Astronaut Theme Setup
+setup_sddm_theme() {
+    confirm "Setup SDDM Astronaut theme?" || return
+    log "Installing SDDM Astronaut theme..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/keyitdev/sddm-astronaut-theme/master/setup.sh)" || fail "SDDM Astronaut theme install failed"
+    success "SDDM Astronaut theme installed"
+}
+
+# Main Execution
 main() {
-    info "HyDE Post Setup!"
-    info "Created by Evrenos"
-    echo
-
-    # Verify running on Arch Linux
-    if [[ ! -f /etc/arch-release ]]; then
-        error "This script is designed for Arch Linux only!"
-    fi
-
-    # Check for sudo/root privileges
-    if [[ "$EUID" -eq 0 ]]; then
-        error "Do not run this script as root. Use sudo if needed."
-    fi
-
-    ensure_dir "$CLONE_DIR"
-
-    # Install dependencies first
-    install_dependencies
-
-    # Run setup functions
-    setup_zsh_config
+    log "HyDE Post Setup"
+    [[ ! -f /etc/arch-release ]] && fail "Not an Arch-based system"
+    [[ "$EUID" -eq 0 ]] && fail "Do not run as root"
     setup_rustor
     setup_grub_theme
     setup_sysfetch
-
-    success "All setup tasks completed successfully!"
-
-    # Prompt for system reboot
-    if confirm "Would you like to reboot now?"; then
-        sudo reboot
-    fi
+    setup_sddm_theme
+    success "Setup complete"
 }
 
-# Run main function
 main "$@"
