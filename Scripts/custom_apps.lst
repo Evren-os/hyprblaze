@@ -1,12 +1,12 @@
-telegram-desktop             # Telegram Client
 signal-desktop               # Signal Client
 legcord-bin                  # Lightweight Discord Client
 brave-beta-bin               # Brave Browser (Beta)
 obsidian                     # Note-Taking App
 vscodium-bin                 # Open-Source VSCode Alternative
 vscodium-bin-marketplace     # Marketplace for VSCodium
-affine-bin                   # Note-Taking & Whiteboarding Tool
+#affine-bin                  # Note-Taking & Whiteboarding Tool
 spotify                      # Music Streaming
+telegram-desktop             # Telegram Client
 # spotube-bin                # Spotube Music Streaming Client
 qmplay2                      # Media Player
 nomacs                       # Image Viewer
