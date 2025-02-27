@@ -54,12 +54,12 @@ zip                          # Compression Tool
 unzip                        # Decompression Tool
 unrar                        # RAR Support
 zen-browser-bin              # Zen Browser (Beta)
-zen-twilight-bin             # Zen Browser (Nightly)
+# zen-twilight-bin           # Zen Browser (Nightly)
 qbittorrent                  # Torrent Client
 yt-dlp                       # Media Downloader
 ttf-jetbrains-mono-nerd      # Developer Font
 ttf-twemoji                  # Emoji Font
-ttf-segoe-ui-variable        # Segoe UI Variable Font
+# ttf-segoe-ui-variable      # Segoe UI Variable Font
 ttf-iosevka-nerd             # Iosevka Nerd Font
 otf-geist-mono-nerd          # font family for Vercel
 otf-geist                    # font family for Vercel
