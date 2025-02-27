@@ -54,15 +54,7 @@ setup_sysfetch() {
 
 setup_sddm_theme_silent() {
     log "Setting up SDDM theme..."
-    if command -v pacman >/dev/null 2>&1; then
-         sudo pacman --noconfirm --needed -S sddm qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg >/dev/null 2>&1
-    elif command -v xbps-install >/dev/null 2>&1; then
-         sudo xbps-install sddm qt6-svg qt6-virtualkeyboard qt6-multimedia >/dev/null 2>&1
-    elif command -v dnf >/dev/null 2>&1; then
-         sudo dnf install -y sddm qt6-qtsvg qt6-qtvirtualkeyboard qt6-qtmultimedia >/dev/null 2>&1
-    elif command -v zypper >/dev/null 2>&1; then
-         sudo zypper install -y sddm-qt6 libQt6Svg6 qt6-virtualkeyboard qt6-virtualkeyboard-imports qt6-multimedia qt6-multimedia-imports >/dev/null 2>&1
-    fi
+    sudo pacman --noconfirm --needed -S sddm qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg >/dev/null 2>&1
 
     local theme_dir="$HOME/sddm-astronaut-theme"
     if [ -d "$theme_dir" ]; then
