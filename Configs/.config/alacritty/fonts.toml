@@ -2,14 +2,14 @@
 size = 10
 
   [font.normal]
-  family = "GeistMono Nerd Font"
+  family = "JetBrainsMono Nerd Font"
 
   [font.bold]
-  family = "GeistMono Nerd Font"
+  family = "JetBrainsMono Nerd Font"
   style = "Regular"
 
   [font.italic]
-  family = "GeistMono Nerd Font"
+  family = "JetBrainsMono Nerd Font"
 
   [font.offset]
   x = 0
